@@ -20,6 +20,8 @@
     <!---------------------------------------------------------------------------------------------------------------->
     <link rel="stylesheet" href="./css/normal.css">
     <!---------------------------------------------------------------------------------------------------------------->
+    <link rel="icon" href="./css/Durent-logo.png">
+    <!---------------------------------------------------------------------------------------------------------------->
   </head>
   <body>
 
@@ -29,6 +31,7 @@
       <div class="container">
         <ul id="navMain">
           <div class="navLeft">
+            <img style="margin:0px;padding:0px;height:25px" src="./css/Durent-logo.png">
             <li><a style="padding-left:0px;" href="index.php">Durent</a></li>
           </div>
           <div class="navCenter">
@@ -65,7 +68,8 @@
     <footer style="display:flex; overflow:hidden; font-size:14px; padding-top:40px; padding-bottom:20px;" class="footer">
       <div style="flex:1;"></div>
       <div style="flex:4; border-top:1px solid #ddd;">
-        <p>The Rental</p>
+        <img style="margin:0px;padding:0px;padding-top:15px;padding-right:5px;height:25px;display:inline;" src="./css/Durent-logo.png">
+        <p style="display:inline;">Durent</p>
           <div style="display:flex; overflow:hidden; flex:4; padding-bottom:20px;">
             <div style="flex:1;" class="lFooter">
               <p>Learn</p>

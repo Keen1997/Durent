@@ -44,7 +44,7 @@ h2{
   font-weight: normal;
 }
 
-input{
+input, textarea, select{
   padding: 10px 20px;
   border-radius: 18px;
   border: 1px solid #E5E5E5;

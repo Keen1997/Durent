@@ -13,7 +13,7 @@
   .divLeft1 {
     padding-bottom: 50px;
     flex: 1;
-    background-image:linear-gradient(to bottom, #000, #161616)
+    background-image:linear-gradient(to bottom, #1e1f21, #1e1f21 )
   }
   .divRight1 {
     flex: 1;

@@ -20,7 +20,11 @@
     <!---------------------------------------------------------------------------------------------------------------->
     <link rel="stylesheet" href="./css/normal.css">
     <!---------------------------------------------------------------------------------------------------------------->
+<<<<<<< HEAD
     <link rel="icon" href="./css/Durent-logo.png">
+=======
+    <link rel="icon" href="./assets/static/Durent-logo.png">
+>>>>>>> 1d7e0b3ec2ce9bef0d0340be57086c7cabf46e09
     <!---------------------------------------------------------------------------------------------------------------->
   </head>
   <body>
@@ -31,13 +35,17 @@
       <div class="container">
         <ul id="navMain">
           <div class="navLeft">
+<<<<<<< HEAD
             <img style="margin:0px;padding:0px;height:25px" src="./css/Durent-logo.png">
+=======
+            <img style="margin:0px;padding:0px;height:25px" src="./assets/static/Durent-logo.png">
+>>>>>>> 1d7e0b3ec2ce9bef0d0340be57086c7cabf46e09
             <li><a style="padding-left:0px;" href="index.php">Durent</a></li>
           </div>
           <div class="navCenter">
             <li><a href="#">About</a></li>
-            <li><a href="#">Find</a></li>
-            <li><a href="#">Rent Out</a></li>
+            <li><a href="index.php?find">Find</a></li>
+            <li><a href="index.php?rentOut">Rent Out</a></li>
           </div>
           <div class="navRight">
             <li><a href="index.php?login">Log In</a></li>
@@ -61,6 +69,8 @@
       else if (isset($_GET['login'])) require './pages/login.php';
       else if (isset($_GET['afterSignup'])) require './pages/afterSignup.php';
       else if (isset($_GET['afterLogin'])) require './pages/afterLogin.php';
+      else if (isset($_GET['find'])) require './pages/find.php';
+      else if (isset($_GET['rentOut'])) require './pages/rentOut.php';
       else require './pages/waterfall.php'
     ?>
 
@@ -68,8 +78,13 @@
     <footer style="display:flex; overflow:hidden; font-size:14px; padding-top:40px; padding-bottom:20px;" class="footer">
       <div style="flex:1;"></div>
       <div style="flex:4; border-top:1px solid #ddd;">
+<<<<<<< HEAD
         <img style="margin:0px;padding:0px;padding-top:15px;padding-right:5px;height:25px;display:inline;" src="./css/Durent-logo.png">
         <p style="display:inline;">Durent</p>
+=======
+        <img style="margin:0px;padding:0px;padding-top:15px;padding-right:5px;height:25px;display:inline;" src="./assets/static/Durent-logo.png">
+        <p>The Rental</p>
+>>>>>>> 1d7e0b3ec2ce9bef0d0340be57086c7cabf46e09
           <div style="display:flex; overflow:hidden; flex:4; padding-bottom:20px;">
             <div style="flex:1;" class="lFooter">
               <p>Learn</p>

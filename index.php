@@ -20,7 +20,7 @@
     <!---------------------------------------------------------------------------------------------------------------->
     <link rel="stylesheet" href="./css/normal.css">
     <!---------------------------------------------------------------------------------------------------------------->
-    <link rel="icon" href="./assets/static/Durent-logo.png">
+    <link rel="icon" href="./assets/static/logo.png">
     <!---------------------------------------------------------------------------------------------------------------->
   </head>
   <body>
@@ -31,8 +31,9 @@
       <div class="container">
         <ul id="navMain">
           <div class="navLeft">
-            <img style="margin:0px;padding:0px;height:25px" src="./assets/static/Durent-logo.png">
-            <li><a style="padding-left:0px;" href="index.php">Durent</a></li>
+            <li><a style="padding-left:0px;" href="index.php">
+              <img id="navLogo" style="margin:-5px;padding:0px;height:30px" src="./assets/static/logo_white.png">
+            </a></li>
           </div>
           <div class="navCenter">
             <li><a href="#">About</a></li>
@@ -58,11 +59,17 @@
     <!-- Templates for each page -->
     <?php
       if (isset($_GET['signup'])) require './pages/signup.php';
+      else if (isset($_GET['addressEdit'])) require './pages/profile/addressEdit.php';
+      else if (isset($_GET['basicDataEdit'])) require './pages/profile/basicDataEdit.php';
+      else if (isset($_GET['afterAddressEdit'])) require './pages/profile/afterAddressEdit.php';
+      else if (isset($_GET['afterBasicDataEdit'])) require './pages/profile/afterBasicDataEdit.php';
       else if (isset($_GET['login'])) require './pages/login.php';
       else if (isset($_GET['afterSignup'])) require './pages/afterSignup.php';
       else if (isset($_GET['afterLogin'])) require './pages/afterLogin.php';
       else if (isset($_GET['find'])) require './pages/find.php';
-      else if (isset($_GET['rentOut'])) require './pages/rentOut.php';
+      else if (isset($_GET['rentOut'])) require './pages/rentOut/rentOut.php';
+      else if (isset($_GET['afterRental'])) require './pages/afterRental.php';
+      else if (isset($_GET['detailItem'])) require './pages/detailItem.php';
       else require './pages/waterfall.php'
     ?>
 
@@ -70,9 +77,9 @@
     <footer style="display:flex; overflow:hidden; font-size:14px; padding-top:40px; padding-bottom:20px;" class="footer">
       <div style="flex:1;"></div>
       <div style="flex:4; border-top:1px solid #ddd;">
-        <img style="margin:0px;padding:0px;padding-top:15px;padding-right:5px;height:25px;display:inline;" src="./assets/static/Durent-logo.png">
-        <p>The Rental</p>
-          <div style="display:flex; overflow:hidden; flex:4; padding-bottom:20px;">
+        <img style="margin:0px;padding:0px;padding-top:15px;padding-right:5px;height:25px;display:inline;" src="./assets/static/logo.png">
+        <span style="margin-left:10px;">Durent</span>
+          <div style="display:flex; overflow:hidden; flex:4; margin-bottom:20px; margin-top:20px;">
             <div style="flex:1;" class="lFooter">
               <p>Learn</p>
               <a href="#">How to retire</a><br>
@@ -95,10 +102,10 @@
             </div>
             <div style="flex:1;" class="rFooter">
               <p>Contact Us</p>
-              <a href="#">Email:</a><br>
-              <a href="#">Tel:</a><br>
-              <a href="#">Line:</a><br>
-              <a href="#">Facebook:</a>
+              <a href="#">Email : </a><br>
+              <a href="#">Tel : </a><br>
+              <a href="#">Line : </a><br>
+              <a href="#">Facebook : </a>
             </div>
         </div>
         <div style="display:flex; overflow:hidden; border-top:1px solid #ddd; padding-top:10px;">

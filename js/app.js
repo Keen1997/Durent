@@ -25,8 +25,20 @@ let navMobileToggle = function(){
  })
 }
 
+// In navigator change logo to more black when mouse hover
+let navLogoHover = function(){
+  $("#navLogo").hover(function() {
+    $(this).attr("src","./assets/static/logo_gray.png")
+  }, function() {
+    $(this).attr("src","./assets/static/logo_white.png")
+  }
+);
+}
+
 // Call the init processes after the window loads
 window.onload = function(){
   // In mobile size, when click menu icon in navigator, toggle the menu
   navMobileToggle()
+  // In navigator change logo to more black when mouse hover
+  navLogoHover()
 }

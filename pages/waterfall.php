@@ -74,7 +74,7 @@
       <span style="color:#FFF; font-size:40px;color:#88aaff;">RISK</span><br>
       <div style="height:8px;"></div>
       <span style="color:#FFF; font-size:24px;">just need to</span>
-      <span style="color:#FFF; font-size:40px;padding-left:2px;color:#88aaff">INVEST</span>
+      <span style="color:#FFF; font-size:40px;padding-left:2px;color:#88ffaa">INVEST</span>
     </div>
   </div>
   <!-- break -->

@@ -1,6 +1,6 @@
 <!--
   *
-  * Signup template
+  * Signup basic template
   *
  -->
 

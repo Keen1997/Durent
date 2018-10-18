@@ -1,0 +1,62 @@
+/*
+ * Design for normal class for each component can use
+ *
+ */
+
+/* Container for flexible with width screen */
+.container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width:576px){
+  .container{
+    max-width: 540px
+  }
+}
+@media (min-width:768px){
+  .container{
+    max-width: 720px
+  }
+}
+@media (min-width:992px){
+  .container{
+    max-width: 960px
+  }
+}
+@media (min-width:1200px){
+  .container{
+    max-width: 1140px
+  }
+}
+
+/* Margin top for under the navigator bar */
+main{
+  margin-top: 120px;
+}
+/* Remove the margin top for under the navigator bar */
+.fluidTop{
+  margin-top: -120px;
+}
+
+/* Config form in center  */
+.formCenter{
+  margin: auto;
+  text-align: center;
+  margin-bottom: 180px;
+  width: 700px;
+}
+.formCenter input,textarea{
+  width: 100%;
+}
+.formCenter a{
+  color: inherit;
+}
+
+/* Config small form */
+.smallForm{
+  margin-top: 180px;
+  width: 300px;
+}

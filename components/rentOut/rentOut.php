@@ -9,15 +9,6 @@
 <link href="plugins/datedropper/Keen-Style.css" rel="stylesheet" type="text/css" />
 
 <style>
-  .template{
-    margin-top: 120px;
-    text-align: center;
-    width: 700px;
-  }
-  .template input, .template textarea, .template select{
-    width: 100%;
-    border-radius: 12px;
-  }
   select{
     margin-bottom: 20px;
     width: 100%;
@@ -31,7 +22,7 @@
 </style>
 
 <!-- Display form login -->
-<div class="container template">
+<div class="container formCenter">
   <h2>Rent out your item</h2>
   <br>
   <form class="" action="index.php?afterRental" method="post">
@@ -46,7 +37,7 @@
     <br><br>
     <input type="file" name="" value="">
     <br><br>
-    <div style="text-align">
+    <div>
       <span style="margin-right:5px;">from</span>
       <input type="text"
         id="dateFrom"

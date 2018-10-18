@@ -1,5 +1,5 @@
 /*
- * Design for main (all pages)
+ * Design for main style of this website
  *
  */
 
@@ -16,32 +16,4 @@
  body{
    margin: 0px;
    font-family: 'mainFont', sans-serif;
- }
- /* Container for the detail that we don't want to fill width screen */
- .container{
-   width:100%;
-   padding-right:15px;
-   padding-left:15px;
-   margin-right:auto;
-   margin-left:auto;
- }
- @media (min-width:576px){
-   .container{
-     max-width:540px
-   }
- }
- @media (min-width:768px){
-   .container{
-     max-width:720px
-   }
- }
- @media (min-width:992px){
-   .container{
-     max-width:960px
-   }
- }
- @media (min-width:1200px){
-   .container{
-     max-width:1140px
-   }
  }

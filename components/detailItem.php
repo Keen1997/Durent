@@ -2,7 +2,7 @@
   *
   * Detail Item template
   *
- -->
+-->
 
 <link href="plugins/xzoom/xzoom.css" rel="stylesheet" type="text/css">
 <script src="plugins/xzoom/xzoom.min.js"></script>
@@ -52,9 +52,26 @@
     margin-top: 50px;
     text-align: right;
   }
+  #label img{
+    margin: -20px;
+  }
   #label img:hover{
     width: 200px;
     cursor: pointer;
+  }
+  .date {
+    color: orange;
+  }
+  .rent_btn{
+    border-radius: 6px;
+    background-image: linear-gradient(#679aef, #306bcc);
+    color: #FFF;
+    font-weight: bold;
+    border: 1px solid #1a6aed;
+    font-family: 'mainFontLigth';
+  }
+  .rent_btn:hover{
+    background-image: linear-gradient(#78abff, #417cdd);
   }
 </style>
 
@@ -82,14 +99,14 @@
       <p>In fact, users will need to have an iPhone 5 or later connected to the smartwatch in order to access Apple Watch's full set of features.</p>
     </div>
     <!-- Date -->
-    <label>between <span>14-10-2018</span> to <span>21-11-2018</span></label>
+    <label>between <span class="date">14-10-2018</span> to <span class="date">21-11-2018</span></label>
     <!-- Price -->
     <div id="price">
       <label>$31 per day</label>
     </div>
     <!-- Rent btn -->
     <div id="label">
-      <img src="assets/static/label.png" width="150px;">
+      <button class="rent_btn">Rent</button>
     </div>
   </div>
 

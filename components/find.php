@@ -5,9 +5,6 @@
  -->
 
 <style>
-  .template{
-    margin-top: 120px;
-  }
   .searchTap{
     width: 100%;
     text-align: center;
@@ -70,7 +67,7 @@
 </style>
 
 <!-- Display form login -->
-<div class="template">
+<div>
   <div class="searchTap">
     <input type="text" name="" value="" placeholder="search">
     <img src="./assets/static/search.png" width="20px" style="margin-right:12px;">
@@ -79,7 +76,7 @@
       <div style="flex:1;"></div>
       <div style="flex:4; text-align:right; margin-right:16px; margin-top:50px; cursor:pointer;">
         <img src="./assets/static/filter.png" width="20px" style="margin-right:8px; opacity:0.45;">
-        <span id="filterState">Most Popular</span>
+        <span id="filterState">Price</span>
       </div>
       <div style="flex:1;"></div>
     </div>

@@ -11,7 +11,7 @@
 </style>
 
  <!-- Display form Signup -->
-<div class="container formInCenter">
+<div class="container formCenter">
   <h2>Edit your data edit</h2>
   <br>
   <form class="" action="index.php?afterBasicDataEdit" method="post">

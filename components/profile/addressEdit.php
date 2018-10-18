@@ -5,7 +5,7 @@
  -->
 
  <!-- Display form Signup -->
-<div class="container formInCenter">
+<div class="container formCenter">
   <h2>Edit your address</h2>
   <br>
   <form class="" action="index.php?afterAddressEdit" method="post">

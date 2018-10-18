@@ -5,14 +5,14 @@
  -->
 
 <!-- Display form login -->
-<div class="container formInCenter">
+<div class="container formCenter smallForm">
   <h2>Log In</h2>
   <label class="small">Already have an account? <a href="index.php?signup">Create account</a></label>
   <br><br>
   <form class="" action="index.php?afterLogin" method="post">
-    <input type="text" name="" value="" placeholder="email">
+    <input type="text" name="email" value="" placeholder="email">
     <br><br>
-    <input type="text" name="" value="" placeholder="password">
+    <input type="text" name="password" value="" placeholder="password">
     <br><br>
     <input type="submit" name="" value="Log In">
     <br><br>

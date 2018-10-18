@@ -42,7 +42,7 @@
 </style>
 
 <!-- Display -->
-<div>
+<div class="fluidTop">
   <!-- Second waterfall -->
   <div class="flex" style="background-color:#000;">
     <div class="divLeft2">
@@ -74,19 +74,18 @@
       <span style="color:#FFF; font-size:40px;color:#88aaff;">RISK</span><br>
       <div style="height:8px;"></div>
       <span style="color:#FFF; font-size:24px;">just need to</span>
-      <span style="color:#FFF; font-size:40px;padding-left:2px;color:#88aaff">INVEST</span>
+      <span style="color:#FFF; font-size:40px;padding-left:2px;color:#88ffaa">INVEST</span>
     </div>
   </div>
   <!-- break -->
   <div style="height:15px;"></div>
 </div>
-<div style="height:500px;"><p id="pos">scroll Y axis</p></div>
+<div style="height:200px;"></div>
 
 <script type="text/javascript">
 
   window.onscroll = function() {
     scrollTop = document.documentElement.scrollTop
-    $('#pos').text(scrollTop)
     if(scrollTop>=450 && scrollTop<=750){
       imgHeight = 100-(scrollTop-450)/20
       paddingLeft = 80+(scrollTop-450)*1.5

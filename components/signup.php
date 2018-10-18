@@ -1,11 +1,11 @@
 <!--
   *
-  * Signup template
+  * Signup basic template
   *
  -->
 
  <!-- Display form Signup -->
-<div class="container formInCenter">
+<div class="container formCenter smallForm">
   <h2>Create Account</h2>
   <label class="small">Already have an account? <a href="index.php?login">Log In</a></label>
   <br><br>

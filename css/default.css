@@ -8,14 +8,6 @@
   color: #888;
 }
 
-.icon_signIn{
-  cursor: pointer;
-}
-
-.icon_signIn:hover{
-  width: 48px;
-}
-
 a{
   text-decoration: none;
 }

@@ -9,8 +9,14 @@
 <link href="plugins/datedropper/Keen-Style.css" rel="stylesheet" type="text/css" />
 
 <style>
+  input{
+    margin-bottom: 15px;
+  }
+  textarea{
+    margin-bottom: 15px;
+  }
   select{
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     width: 100%;
   }
   option{
@@ -18,6 +24,36 @@
     border-color: #8A8A8A #E5E5E5 #E5E5E5 #8A8A8A;
     border-style: solid;
     border-width: 1px;
+  }
+  #dateFrom, #dateTo{
+    width: 42%;
+  }
+  #fromText{
+    margin-right: 10px;
+  }
+  #toText{
+    margin-left: 18px;
+    margin-right: 5px;
+  }
+  .breakLine{
+    display: none;
+  }
+  @media (max-width:768px) {
+    .formCenter{
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    #dateTo, #dateFrom{
+      width: 75%;
+    }
+    .breakLine{
+      display: block;
+      margin-bottom: 20px;
+    }
+    #toText{
+      margin-right: 20px;
+    }
   }
 </style>
 
@@ -38,7 +74,7 @@
     <input type="file" name="" value="">
     <br><br>
     <div>
-      <span style="margin-right:5px;">from</span>
+      <span id="fromText">from</span>
       <input type="text"
         id="dateFrom"
         class="form-control"
@@ -47,9 +83,9 @@
         data-large-mode="true"
         data-translate-mode="true"
         data-theme="Keen-Style"
-        style="width:40%"
       />
-      <span style="margin-left: 18px; margin-right:5px;"> to</span>
+      <div class="breakLine"></div>
+      <span id="toText">to</span>
       <input type="text"
         id="dateTo"
         class="form-control"
@@ -58,7 +94,6 @@
         data-large-mode="true"
         data-translate-mode="true"
         data-theme="Keen-Style"
-        style="width:40%"
       />
       <br><br>
     </div>

@@ -9,34 +9,38 @@
 
 <style>
   .template{
-    margin-top: 120px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
   }
-  .left{
-    float: left;
-    /* border: 1px solid red; */
-    width: 400px;
+  .image{
+    display: inline-block;
+    max-width: 400px;
+    margin-right: 50px;
+    box-sizing: border-box;
   }
-  .right{
-    float: left;
-    /* border: 1px solid red; */
-    width: 600px;
-    margin-left: 100px;
+  .text{
+    text-align: left;
+    display: inline-block;
+    max-width: 600px;
+    margin-left: 50px;
+    box-sizing: border-box;
   }
-  .right h1{
+  .text h1{
     margin-bottom: 50px;
   }
-  .right h3{
+  .text h3{
     font-family: "mainFontLigth";
     margin-bottom: 30px;
   }
-  .right p{
+  .text p{
     text-indent: 40px;
     margin-bottom: 20px;
   }
-  .right p:last-child{
+  .text p:last-child{
     margin-bottom: 50px;
   }
-  .right span{
+  .text span{
     margin: 0px 10px 0px;
   }
   #price{
@@ -73,11 +77,53 @@
   .rent_btn:hover{
     background-image: linear-gradient(#78abff, #417cdd);
   }
+
+  @media (max-width:1250px) {
+    .image{
+      margin-right: 25px;
+    }
+    .text{
+      margin-left: 25px;
+    }
+  }
+
+  @media (max-width:1150px) {
+    .image{
+      display: block;
+      margin-right: 0px;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+    .text{
+      display: block;
+      margin-left: 0px;
+      margin: auto;
+    }
+  }
+
+  @media (max-width:650px) {
+    .template{
+      margin-top: -40px;
+    }
+    .text{
+      padding: 25px;
+      padding-top: 0px;
+    }
+    .text h1{
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width:416px) {
+    .image{
+      width: 350px;
+    }
+  }
 </style>
 
 <!-- Display form login -->
-<div class="container template">
-  <div class="left">
+<div class="template">
+  <div class="image">
     <!-- Show all item image with xzoom plugin -->
     <div class="xzoom-container">
         <img class="xzoom" src="assets/non-static/gallery/preview/appleWatch.jpg" xoriginal="assets/non-static/gallery/original/appleWatch.jpg" />
@@ -89,7 +135,7 @@
         </div>
     </div>
   </div>
-  <div class="right">
+  <div class="text">
     <!-- Item title -->
     <h1>My new apple watch , buy 1 month , never use</h1>
     <!-- Item description -->

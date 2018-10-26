@@ -90,6 +90,7 @@ footer a:hover{
   padding: 16px 0px;
   width: 100%;
   border: none;
+  border-radius: 0px;
   border-top: 1px solid #DDD;
   text-align: left;
   outline: none;
@@ -112,7 +113,8 @@ footer a:hover{
   background-color: #FFF;
   overflow: hidden;
 }
-@media (max-width:768px) {
+
+@media (max-width:850px) {
   #footerMiddle{
     display: none;
   }

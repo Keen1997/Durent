@@ -55,8 +55,22 @@ main{
   color: inherit;
 }
 
+/* Background color black in navigator bar */
+.navBackground{
+  height: 51px;
+  background-color: #000;
+}
+
 /* Config small form */
 .smallForm{
   margin-top: 180px;
   width: 300px;
+}
+
+/* Config for icon signin */
+.icon_signIn{
+  cursor: pointer;
+}
+.icon_signIn:hover{
+  width: 48px;
 }

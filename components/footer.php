@@ -85,7 +85,7 @@ footer a:hover{
   margin-top: 20px;
 }
 #footerToggles .accordion {
-  background-color: #FFF;
+  background-color: transparent;
   cursor: pointer;
   padding: 16px 0px;
   width: 100%;
@@ -110,7 +110,7 @@ footer a:hover{
   font-size: 12px;
   padding: 10px 18px 20px 18px;
   display: none;
-  background-color: #FFF;
+  background-color: transparent;
   overflow: hidden;
 }
 

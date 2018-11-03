@@ -1,25 +1,30 @@
-#row1{
-  display: flex;
+/*
+ * Design for waterfall page (homepage)
+ *
+ */
+
+body{
+  background-color: #EEE;
+  overflow-x: hidden;
 }
-#row1Toggle{
-  display: none;
-}
-#imgDiv1{
-  display: inline-block;
-  width: 55%;
-  background-image: linear-gradient(to bottom, #000, #161616);
-}
-#textDiv1{
-  display: inline-block;
-  width: 45%;
-  background-image: linear-gradient(to bottom, #000, #161616);
-  text-align: right;
-}
-#text1{
+
+
+/* First Box */
+.box1Top{
+  background-color: #000;
   color: #FFF;
-  padding-top: 200px;
-  padding-right: 50px;
-  padding-bottom: 100px;
+  text-align: center;
+  padding-top: 70px;
+}
+.box1Bottom{
+  background-color: #000;
+  text-align: center;
+}
+.nextSign{
+  font-family: monospace;
+}
+#beat{
+  width: 700px;
 }
 #letYourThings{
   font-size: 24px;
@@ -30,78 +35,289 @@
 #forYou{
   font-size: 24px;
 }
-@media (max-width: 1384px) {
-  #text1{
-    padding-top: 180px;
-    padding-right: 50px;
-    padding-bottom: 80px;
+#about{
+  font-size: 22px;
+  color: #8AF;
+}
+#about:hover{
+  text-decoration: underline;
+}
+
+
+/* Second Box */
+.box2 {
+  background-image: linear-gradient(to right, #000, #555, #000, #000, #000, #000);
+  color: #FFF;
+}
+.box2Toggle{
+  display: none;
+}
+.box2Left {
+  display: inline-block;
+  width: 500px;
+  margin-left: 3%;
+}
+.box2Right {
+  display: inline-block;
+  padding-left: 80px;
+  transform: translateY(-80%);
+}
+#camera{
+  width: 100%;
+}
+#thisInvestment{
+  color: #FFF;
+  font-size: 24px;
+}
+#dontHave{
+  font-size: 40px;
+  color: #8AF;
+}
+#any{
+  color: #FFF;
+  font-size: 24px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+#risk{
+  color: #FFF;
+  font-size: 40px;
+  color: #8AF;
+}
+#justNeedTo{
+  color: #FFF;
+  font-size: 24px;
+}
+#invest{
+  color: #FFF;
+  font-size: 40px;
+  padding-left: 2px;
+  color: #8FA
+}
+.box2TopToggle{
+  background-image: linear-gradient(to bottom, #000, #222);
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.box2BottomToggle{
+  margin-top: -2px;
+}
+@media (max-width: 1060px) {
+  .box2Right{
+    padding-left: 40px;
+    transform: translateY(-100%);
   }
-  #letYourThings{
-    font-size: 22px;
+  #thisInvestment, #any, #justNeedTo{
+    font-size: 20px;
   }
-  #makeMoney{
+  #dontHave, #risk, #invest{
     font-size: 36px;
   }
-  #forYou{
-    font-size: 22px;
+}
+@media (max-width: 990px) {
+  .box2Left{
+    width: 400px;
+  }
+  .box2Right{
+    padding-left: 80px;
+    transform: translateY(-80%);
+  }
+  #thisInvestment, #any, #justNeedTo{
+    font-size: 18px;
+  }
+  #dontHave, #risk, #invest{
+    font-size: 32px;
   }
 }
-@media (max-width: 1285px) {
-  #text1{
-    padding-top: 180px;
-    padding-bottom: 30px;
+@media (max-width: 915px) {
+  .box2{
+    display: none;
   }
-  #letYourThings{
+  .box2Toggle{
+    display: block;
+    text-align: center;
+  }
+  .box2BottomToggle{
+    display: block;
+    text-align: center;
+    width: 100%;
+    background-image: linear-gradient(to right, #000, #555, #000);
+  }
+  #camera2{
+    width: 500px;
+  }
+}
+@media (max-width: 580px) {
+  .box2TopToggle{
+    text-align: left;
+  }
+  .box2TopToggle{
+    padding-left: 16%;
+  }
+  #camera2{
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .box2TopToggle{
+    padding-left: 10%;
+  }
+  #letYourThings, #forYou{
     font-size: 20px;
   }
   #makeMoney{
     font-size: 32px;
   }
-  #forYou{
+  #dontHave, #risk, #invest{
+    font-size: 28px;
+  }
+  #about{
+    font-size: 18px;
+  }
+}
+
+
+/* Third Box */
+.box3{
+  text-align: center;
+  margin-top: 150px;
+}
+#orDoYouWantToRent{
+  margin-bottom: 80px;
+  font-size: 36px;
+}
+.leftBox3, .rightBox3{
+  padding-top: 75px;
+  display: inline-block;
+  background-color: #FFF;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 40%;
+  padding-bottom: -5px;
+}
+.leftBox3 img, .rightBox3 img{
+  vertical-align: bottom;
+}
+#suit{
+  width: 250px;
+}
+#bag{
+  width: 235px;
+}
+#haveYouEverOnly, #youDoNotAlwaysHaveToBuyA{
+  font-size: 20px;
+}
+#oneTime, #newOne{
+  font-size: 32px;
+  font-weight: bold;
+}
+.about2{
+  color: #01F;
+  font-size: 18px;
+}
+.about2:hover{
+  text-decoration: underline;
+}
+@media (max-width: 850px) {
+  .leftBox3, .rightBox3{
+    padding-top: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 265px;
+  }
+  #suit{
+    width: 175px;
+  }
+  #bag{
+    width: 164px;
+  }
+  #haveYouEverOnly, #youDoNotAlwaysHaveToBuyA{
+    font-size: 16px;
+  }
+  #oneTime, #newOne{
+    font-size: 26px;
+  }
+  .about2{
+    font-size: 15px;
+  }
+}
+@media (max-width: 700px) {
+  .leftBox3, .rightBox3{
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  #suit{
+    width: 200px;
+  }
+  #bag{
+    width: 188px;
+  }
+}
+@media (max-width: 520px) {
+  #orDoYouWantToRent{
+    font-size: 32px;
+  }
+}
+@media (max-width: 468px) {
+  #orDoYouWantToRent{
+    font-size: 28px;
+  }
+}
+
+
+/* Forth Box */
+.box4{
+  text-align: center;
+  margin-top: 200px;
+}
+.box4 img{
+  margin-left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.7;
+}
+#createAInteligent{
+  font-size: 36px;
+}
+#yourOwn{
+  font-size: 22px;
+}
+@media (max-width: 768px) {
+  .box4{
+    margin-top: 150px;
+  }
+  #createAInteligent{
+    font-size: 32px;
+  }
+  #yourOwn{
     font-size: 20px;
   }
 }
-@media (max-width: 1195px) {
-  #text1{
-    padding-top: 155px;
+@media (max-width: 600px) {
+  .box4{
+    margin-top: 100px;
   }
-}
-@media (max-width: 1095px) {
-  #text1{
-    padding-top: 140px;
-  }
-}
-@media (max-width: 1005px) {
-  #text1{
-    padding-top: 127px;
-  }
-}
-@media (max-width: 950px) {
-  #text1{
-    padding-top: 110px;
-  }
-  #letYourThings{
-    font-size: 18px;
-  }
-  #makeMoney{
+  #createAInteligent{
     font-size: 28px;
   }
-  #forYou{
+  #yourOwn{
     font-size: 18px;
   }
 }
-@media (max-width: 830px) {
-  #row1{
-    display: block;
+@media (max-width: 525px) {
+  #createAInteligent{
+    font-size: 24px;
   }
-  #imgDiv1{
-    width: 100%;
-    padding-bottom: 0px;
+  #yourOwn{
+    font-size: 16px;
   }
-  #textDiv1{
-    width: 100%;
+}
+@media (max-width: 460px) {
+  #createAInteligent{
+    font-size: 20px;
   }
-  #text1{
-    padding-top: 0px;
+  #yourOwn{
+    font-size: 15px;
   }
 }

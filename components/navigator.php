@@ -11,6 +11,7 @@ nav{
   position: fixed;
   top: 0px;
   background-image: linear-gradient(#000C, #292929CC);
+  z-index:1000;
 }
 nav ul{
   width: 100%;
@@ -62,6 +63,51 @@ nav a:hover{
   width: 20px;
   height: auto;
 }
+/* Dropdown */
+.dropbtn {
+  color: #FFF;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  text-align: center;
+  display: none;
+  position: absolute;
+  background-color: #F9F9F9;
+  margin-left: 10%;
+  width: 80%;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #000;
+  padding: 12px 16px;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  color: #CCC;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #444;
+}
 
 /* Design navigator for full width screen when equal or less than 992px and change size */
 @media (max-width:992px) {
@@ -105,7 +151,6 @@ nav a:hover{
 }
 </style>
 
-
 <!-- Navigator bar for computer width -->
 <div class="container">
   <ul id="navMain">
@@ -115,27 +160,51 @@ nav a:hover{
       </a></li>
     </div>
     <div class="navCenter">
-      <li><a href="#">About</a></li>
-      <li><a href="index.php?find">Find</a></li>
-      <li><a href="index.php?rentOut">Rent Out</a></li>
+      <li><a href="index.php?page=about">About</a></li>
+      <li><a href="index.php?page=find">Find</a></li>
+      <li><a href="index.php?page=rentOut">Rent</a></li>
     </div>
     <div class="navRight">
-      <li><a href="index.php?login">Log In</a></li>
-      <li><a style="padding-right:0px;" href="index.php?signup">Sign Up</a></li>
+    <?php
+      if(isset($_SESSION['email'])){
+        // Check email length, if > 25 add '...' instead
+        if(strlen($_SESSION['email'])>25) $email = substr($_SESSION['email'],0,25).'...';
+        else $email = $_SESSION['email'];
+      ?>
+      <div class="dropdown">
+      <button class="dropbtn"><?php echo $email; ?></button>
+        <div class="dropdown-content">
+          <a href="index.php?page=profile">profile</a>
+          <a href="index.php?page=profile">history</a>
+          <a href="index.php?page=logout">logout</a>
+        </div>
+      </div>
+      <?php
+      } else {
+      ?>
+      <li><a href="index.php?page=login">Log In</a></li>
+      <li><a style="padding-right:0px;" href="index.php?page=signup">Sign Up</a></li>
+      <?php
+      }
+    ?>
     </div>
   </ul>
 </div>
 <!-- Navigator bar for mobile width -->
 <div id="navToggle"><img id="navMenu" src="./assets/static/menu_white.png"></div>
 <ul id="navMedia">
-  <li><a href="index.php?signup">Sign Up</a></li>
-  <li><a href="index.php?login">Log In</a></li>
+  <li><a href="index.php?page=signup">Sign Up</a></li>
+  <li><a href="index.php?page=login">Log In</a></li>
   <li><a href="#">home</a></li>
   <li><a href="#">home</a></li>
 </ul>
 
 
 <script>
+if($('.dropdown-content').width()<=120){
+  $('.dropdown-content').css({'margin-left' : '0px'})
+}
+
 // In mobile size, when click menu icon in navigator, toggle the menu
 let navMobileToggle = function(){
   $('#navMenu').click(function(){
@@ -157,18 +226,22 @@ let navMobileToggle = function(){
     })
   })
   // If toggle is open, when not mobile width screen, change css to default
+  function responsive(){
+    if ($(window).width() > 768) {
+     $("#navMenu").attr("src","./assets/static/menu_white.png")
+     $('#navMedia').css({
+       "display":"none"
+     })
+     $("nav").css({
+       'background-image': 'linear-gradient(#000C, #292929CC)',
+       'background-color': 'transparent'
+     })
+    }
+  }
+  responsive()
   $(window).resize(function() {
-   if ($(window).width() > 768) {
-    $("#navMenu").attr("src","./assets/static/menu_white.png")
-    $('#navMedia').css({
-      "display":"none"
-    })
-    $("nav").css({
-      'background-image': 'linear-gradient(#000C, #292929CC)',
-      'background-color': 'transparent'
-    })
-   }
- })
+    responsive()
+  })
 }
 // In navigator change logo to more black when mouse hover
 let navLogoHover = function(){

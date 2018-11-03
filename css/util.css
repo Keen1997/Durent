@@ -46,13 +46,36 @@ main{
   margin: auto;
   text-align: center;
   margin-bottom: 180px;
-  width: 700px;
+  width: 800px;
 }
-.formCenter input,textarea{
+.formCenter input,textarea,select{
   width: 100%;
 }
 .formCenter a{
   color: inherit;
+}
+@media (max-width:768px) {
+  .formCenter{
+    padding: 0px;
+    width: 100%;
+  }
+  .formCenter input, .formCenter textarea, .formCenter select, #map{
+    margin: auto;
+  }
+  .formCenter input[type='submit']{
+    width: 100%;
+  }
+  .formCenter select{
+    margin-bottom: 20px;
+  }
+}
+@media (max-width:576px) {
+  .formCenter{
+    max-width: 95%;
+  }
+  .formCenter select{
+    margin-bottom: 20px;
+  }
 }
 
 /* Background color black in navigator bar */
@@ -64,13 +87,58 @@ main{
 /* Config small form */
 .smallForm{
   margin-top: 180px;
-  width: 300px;
+  width: 400px;
+}
+
+/* Config small text */
+.smallText{
+  font-size: 12px;
+  color: #888;
+}
+.smallText a:hover{
+  text-decoration: underline;
 }
 
 /* Config for icon signin */
 .icon_signIn{
   cursor: pointer;
+  margin-top: 10px;
 }
 .icon_signIn:hover{
   width: 48px;
+  margin-top: 0px;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  color: #777;
+  background-color: #FFF;
+  border: 1px solid #777;
+  border-radius: 24px;
+  padding: 2px 7px;
+  font-size: 16px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -20%;
+  left: 75%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

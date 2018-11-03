@@ -5,166 +5,7 @@
  -->
 
 <!-- Style -->
-<style>
-  body{
-    background-color: #DDD;
-  }
-  .box1Top{
-    background-color: #000;
-    color: #FFF;
-    text-align: center;
-    padding-top: 70px;
-  }
-  .box1Bottom{
-    background-color: #000;
-    text-align: center;
-  }
-  .nextSign{
-    font-family: monospace;
-  }
-  #beat{
-    width: 700px;
-  }
-  #letYourThings{
-    font-size: 24px;
-  }
-  #makeMoney{
-    font-size: 40px;
-  }
-  #forYou{
-    font-size: 24px;
-  }
-  #about{
-    font-size: 22px;
-    color: #8AF;
-  }
-  #about:hover{
-    text-decoration: underline;
-  }
-  .box2 {
-    display: flex;
-    background-color: #000;
-    color: #FFF;
-  }
-  .box2Toggle{
-    display: none;
-  }
-  .box2Left {
-    padding-bottom: 1%;
-    flex: 1;
-    background-image: linear-gradient(to bottom, #1E1F21, #161616)
-  }
-  .box2Right {
-    flex: 1;
-    padding-top: 11%;
-    padding-left: 80px;
-    background-image: linear-gradient(to right, #1E1F21, #000)
-  }
-  #camera{
-    width: 100%;
-  }
-  #thisInvestment{
-    color: #FFF;
-    font-size: 24px;
-  }
-  #dontHave{
-    font-size: 40px;
-    color: #8AF;
-  }
-  #any{
-    color: #FFF;
-    font-size: 24px;
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-  #risk{
-    color: #FFF;
-    font-size: 40px;
-    color: #8AF;
-  }
-  #justNeedTo{
-    color: #FFF;
-    font-size: 24px;
-  }
-  #invest{
-    color: #FFF;
-    font-size: 40px;
-    padding-left: 2px;
-    color: #8FA
-  }
-  .box2TopToggle{
-    background-image: linear-gradient(to bottom, #000, #222);
-    padding-top: 50px;
-    padding-bottom: 20px;
-    padding-left: 20%;
-  }
-  .box2BottomToggle{
-    margin-top: -2px;
-  }
-  .box3{
-    margin-top: 20px;
-  }
-  @media (max-width: 720px) {
-    .box1Bottom img{
-      max-width: 100%;
-      padding-top: 20px;
-    }
-  }
-  @media (max-width: 1060px) {
-    #thisInvestment, #any, #justNeedTo{
-      font-size: 20px;
-    }
-    #dontHave, #risk, #invest{
-      font-size: 36px;
-    }
-  }
-  @media (max-width: 990px) {
-    .box2Left{
-      padding-top: 0;
-      padding-bottom: 0%;
-    }
-    .box2Right{
-      padding-top: 10%;
-      padding-left: 30px;
-    }
-    #thisInvestment, #any, #justNeedTo{
-      font-size: 18px;
-    }
-    #dontHave, #risk, #invest{
-      font-size: 32px;
-    }
-  }
-  @media (max-width: 755px) {
-    .box2{
-      display: none;
-    }
-    .box2Toggle{
-      display: block;
-    }
-  }
-  @media (max-width: 580px) {
-    .box2TopToggle{
-      padding-left: 16%;
-    }
-  }
-  @media (max-width: 480px) {
-    .box2TopToggle{
-      padding-left: 10%;
-    }
-    #letYourThings, #forYou{
-      font-size: 20px;
-    }
-    #makeMoney{
-      font-size: 32px;
-    }
-    #dontHave, #risk, #invest{
-      font-size: 28px;
-    }
-    #about{
-      font-size: 18px;
-    }
-  }
-</style>
+<link rel="stylesheet" href="./css/Waterfall.css">
 
 <!-- Display -->
 <div class="fluidTop">
@@ -178,7 +19,7 @@
     <span id="makeMoney">MAKE MONEY </span>
     <span id="forYou">for you</span>
     <div style="height:30px"></div>
-    <a href="#" id="about">about <span class="nextSign">></span></a>
+    <a href="index.php?page=about" id="about">about <span class="nextSign">></span></a>
   </div>
   <div class="box1Bottom">
     <img id="beat" src="./assets/static/waterfalls/beat.jpg">
@@ -189,9 +30,9 @@
     <!-- Camera image -->
     <div class="box2Left">
       <img id="camera" src="./assets/static/waterfalls/camera.jpg">
-    </div>
-    <!-- "Let the things MAKE MONEY for you" -->
-    <div class="box2Right">
+    </div
+    ><div class="box2Right">
+      <!-- "Let the things MAKE MONEY for you" -->
       <span id="thisInvestment">This investment<br></span>
       <div style="height:13px"></div>
       <span id="dontHave">DON'T HAVE</span>
@@ -203,7 +44,9 @@
     </div>
   </div>
 
+  <!-- Second box toggle -->
   <div class="box2Toggle">
+    <!-- "Let the things MAKE MONEY for you" -->
     <div class="box2TopToggle">
       <span id="thisInvestment">This investment<br></span>
       <div style="height:13px"></div>
@@ -214,30 +57,63 @@
       <span id="justNeedTo">just need to</span>
       <span id="invest">INVEST</span>
     </div>
+    <!-- Camera image -->
     <div class="box2BottomToggle">
-      <img id="camera" src="./assets/static/waterfalls/camera.jpg">
+      <img id="camera2" src="./assets/static/waterfalls/camera.jpg">
     </div>
   </div>
 
   <!-- Third box -->
   <div class="box3">
+    <!-- "Or do you want to rent " -->
+    <p id="orDoYouWantToRent">Or do you want to rent ?</p>
+    <!-- Have you ever use only ONE TIME -->
+    <div class="leftBox3">
+      <span id="haveYouEverOnly">Have you ever use only</span>
+      <div style="height:13px"></div>
+      <span id="oneTime">ONE TIME</span>
+      <div style="height:20px"></div>
+      <a href="index.php?page=about" class="about2">about <span class="nextSign">></span></a>
+      <div style="height:30px"></div>
+      <img id="suit" src="./assets/static/waterfalls/suit.jpg">
+    </div>
+    <!-- You don't always have to buy a NEW ONE -->
+    <div class="rightBox3">
+      <span id="youDoNotAlwaysHaveToBuyA">You don't always have to buy a</span>
+      <div style="height:13px"></div>
+      <span id="newOne">NEW ONE</span>
+      <div style="height:20px"></div>
+      <a href="index.php?page=find" class="about2">find the things you want <span class="nextSign">></span></a>
+      <div style="height:30px"></div>
+      <img id="bag" src="./assets/static/waterfalls/bag.jpeg">
+    </div>
+  </div>
 
+  <!-- Forth box -->
+  <div class="box4">
+    <!-- Create a inteligent social exchange Start by your own -->
+    <span id="createAInteligent">Create a inteligent social exchange</span>
+    <div style="height:20px"></div>
+    <span id="yourOwn">Start by your own</span>
+    <div style="height:20px"></div>
+    <img src="./assets/static/waterfalls/exchange.jpg">
   </div>
 
   <p id='width'>test</p>
-
-  <!-- break -->
-  <div style="height:15px"></div>
 </div>
-<div style="height:200px"></div>
 
 <script>
-  $(window).resize(function() {
+  // Swap image for responsive
+  function responsive() {
     $('#width').html($(window).width())
     if ($(window).width() < 650) {
       $("#beat").attr("src","./assets/static/waterfalls/microphone.jpg")
     } else {
       $("#beat").attr("src","./assets/static/waterfalls/beat.jpg")
     }
+  }
+  responsive()
+  $(window).resize(function() {
+    responsive()
   })
 </script>

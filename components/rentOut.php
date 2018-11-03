@@ -4,10 +4,6 @@
   *
  -->
 
-<link href="plugins/datedropper/datedropper.css" rel="stylesheet" type="text/css">
-<script src="plugins/datedropper/datedropper.js"></script>
-<link href="plugins/datedropper/Keen-Style.css" rel="stylesheet" type="text/css" />
-
 <style>
   input{
     margin-bottom: 15px;
@@ -75,26 +71,10 @@
     <br><br>
     <div>
       <span id="fromText">from</span>
-      <input type="text"
-        id="dateFrom"
-        class="form-control"
-        data-format="m-d-Y"
-        data-large-default="true"
-        data-large-mode="true"
-        data-translate-mode="true"
-        data-theme="Keen-Style"
-      />
+      <input type="date" id="dateFrom" name=""/>
       <div class="breakLine"></div>
       <span id="toText">to</span>
-      <input type="text"
-        id="dateTo"
-        class="form-control"
-        data-format="m-d-Y"
-        data-large-default="true"
-        data-large-mode="true"
-        data-translate-mode="true"
-        data-theme="Keen-Style"
-      />
+      <input type="date" id="dateTo" name=""/>
       <br><br>
     </div>
     <input type="number" name="" placeholder="price per day">
@@ -103,9 +83,3 @@
     <br><br>
   </form>
 </div>
-
-<script type="text/javascript">
-  //----dateDropper----
-  $('#dateFrom').dateDropper()
-  $('#dateTo').dateDropper()
-</script>

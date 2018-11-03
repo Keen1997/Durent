@@ -3,11 +3,6 @@
  *
  */
 
-.small{
-  font-size: 12px;
-  color: #888;
-}
-
 a{
   text-decoration: none;
 }
@@ -31,9 +26,17 @@ input:hover, textarea:hover, select:hover{
   border: 1px solid #CACACA;
 }
 
+input:focus, textarea:focus, select:focus{
+  border: 1px solid #8AF;
+}
+
 input[type='submit']{
   background-color: #EEE;
   color: #555;
+}
+
+input[type='submit']:hover{
+  border: 1px solid transparent;
 }
 
 input[type='submit']:hover{

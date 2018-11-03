@@ -1,0 +1,305 @@
+.template{
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+.image{
+  display: inline-block;
+  max-width: 400px;
+  margin-right: 50px;
+  box-sizing: border-box;
+}
+.text{
+  text-align: left;
+  display: inline-block;
+  max-width: 600px;
+  margin-left: 50px;
+  box-sizing: border-box;
+}
+.text h1{
+  margin-bottom: 50px;
+}
+.text h3{
+  font-family: "mainFontLigth";
+  margin-bottom: 30px;
+}
+.text p{
+  text-indent: 40px;
+  margin-bottom: 20px;
+}
+.text p:last-child{
+  margin-bottom: 50px;
+}
+.text span{
+  margin: 0px 10px 0px;
+}
+#price{
+  text-align: right;
+  margin-top: 50px;
+}
+#price label{
+  font-size: 18px;
+  color: orange;
+  font-weight: bold;
+}
+#label{
+  margin-top: 50px;
+  text-align: right;
+}
+#label img{
+  margin: -20px;
+}
+#label img:hover{
+  width: 200px;
+  cursor: pointer;
+}
+.date {
+  color: orange;
+}
+.btn{
+  border-radius: 6px;
+  background-image: linear-gradient(#679aef, #306bcc);
+  color: #FFF;
+  font-weight: bold;
+  border: 1px solid #1a6aed;
+  font-family: 'mainFontLigth';
+}
+.btn:hover{
+  background-image: linear-gradient(#78abff, #417cdd);
+}
+
+@media (max-width:1250px) {
+  .image{
+    margin-right: 25px;
+  }
+  .text{
+    margin-left: 25px;
+  }
+}
+
+@media (max-width:1150px) {
+  .image{
+    display: block;
+    margin-right: 0px;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+  .text{
+    display: block;
+    margin-left: 0px;
+    margin: auto;
+  }
+}
+
+@media (max-width:650px) {
+  .template{
+    margin-top: -40px;
+  }
+  .text{
+    padding: 25px;
+    padding-top: 0px;
+  }
+  .text h1{
+    font-size: 22px;
+  }
+}
+
+@media (max-width:416px) {
+  .image{
+    width: 350px;
+  }
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #FEFEFE;
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+  border-radius: 10px;
+  padding-bottom: 24px;
+}
+
+.close {
+  color: #AAA;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding-right: 12px;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.lineBreak{
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-top: 1px solid #EEE;
+  width: 350px;
+}
+.section h3{
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: normal;
+}
+.keySide, .dataSide{
+  display: inline-block;
+  float: left;
+  font-size: 14px;
+  line-height: 32px;
+}
+.keySide{
+  width: calc(45% - 12.5px);
+  text-align: right;
+  padding-right: 12.5px;
+}
+.dataSide{
+  width: calc(55% - 12.5px);
+  text-align: left;
+  padding-left: 12.5px;
+  font-style: italic;
+}
+.address select{
+  width: auto;
+  padding: 5px 10px;
+}
+.addressDetail{
+  font-size: 14px;
+  text-align: center;
+  padding-top: 50px;
+}
+#modal-content2{
+  display: none;
+}
+.item{
+  padding: 15px;
+  padding-top: 0px;
+}
+.item h1{
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  margin-bottom: 24px;
+}
+.item .description p{
+  text-indent: 16px;
+  font-size: 12px;
+  line-height: 12px;
+}
+.item .description h3, .item label{
+  text-align: left;
+  font-size: 12px;
+  line-height: 10px;
+}
+.date_modal{
+  text-align: center;
+  margin-top: 20px;
+}
+.date_modal_toggle{
+  display: none;
+}
+.item input{
+  padding: 2px 10px;
+  font-size: 12px;
+}
+#price_modal{
+  text-indent: 16px;
+  margin-top: 20px;
+  color: #306bcc;
+}
+#price_modal label{
+  font-size: 14px;
+}
+#modal-content3{
+  display: none;
+}
+#modal-content3 input{
+  padding: 2px 10px;
+  font-size: 12px;
+  width: 47.5px;
+}
+@media (max-width: 576px) {
+  .modal {
+    padding-top: 65px; /* Location of the box */
+  }
+  .lineBreak{
+    max-width: 80%;
+  }
+  .keySide{
+    display: none;
+  }
+  .dataSide{
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    padding: 0px;
+  }
+  p{
+    font-size: 12px;
+  }
+  .close{
+    display: none;
+  }
+  .modal-content{
+    width: 90%;
+    padding: 5px;
+  }
+  .lineBreak{
+    display: none;
+  }
+  .modal-content .btn{
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .modal-content .description{
+    display: none;
+  }
+  .address select{
+    width: auto;
+    padding: 2px 5px;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  #price_modal{
+    text-indent: 0px;
+  }
+  .date_modal{
+    display: none;
+  }
+  .date_modal_toggle{
+    display: block;
+    margin-top: 20px;
+  }
+  .date_modal_toggle .left, .date_modal_toggle .right{
+    display: inline-block;
+    width: 40%;
+    text-align: right;
+    box-sizing: border-box;
+    margin-right: 20px;
+  }
+  .date_modal_toggle .right{
+    text-align: left;
+    margin-left: 0px;
+  }
+  .right input{
+    width: 145px;
+  }
+}

@@ -165,6 +165,14 @@
       font-size: 14px;
       float: right;
     }
+    #categoryState{
+      width: 100%;
+      display: block;
+      margin-bottom: 35px;
+    }
+    #filter{
+      text-align: center;
+    }
   }
 
   @media (max-width:550px) {
@@ -188,10 +196,16 @@
 </div>
 
 <div class="allCards">
-  
+
   <div class="cf1">
     <div class="cf2">
-      <span id="categoryState"><span class="categoryName">watch</span><span class="nextCategory">></span><span class="categoryName">health</span></span>
+      <span id="categoryState">
+        <span class="categoryName">Categories</span>
+        <span class="nextCategory">></span>
+        <span class="categoryName">watch</span>
+        <span class="nextCategory">></span>
+        <span class="categoryName">health</span>
+      </span>
       <div id="filter">
         <img src="./assets/static/filter.png" width="20px" style="margin-right:8px; opacity:0.45;">
         <span id="filterState">Price</span>
@@ -200,7 +214,7 @@
   </div>
 
   <div class="cardContainer">
-    <a href="index.php?detailItem" class="card">
+    <a href="index.php?page=itemDetail" class="card">
       <div class="imgCard">
         <img src="./assets/non-static/cardImg1.jpg">
       </div>
@@ -213,7 +227,7 @@
   </div>
 
   <div class="cardContainer">
-    <a href="index.php?detailItem" class="card">
+    <a href="index.php?page=itemDetail" class="card">
       <div class="imgCard">
         <img src="./assets/non-static/cardImg1.jpg">
       </div>
@@ -226,7 +240,7 @@
   </div>
 
   <div class="cardContainer">
-    <a href="index.php?detailItem" class="card">
+    <a href="index.php?page=itemDetail" class="card">
       <div class="imgCard">
         <img src="./assets/non-static/cardImg1.jpg">
       </div>
@@ -239,7 +253,7 @@
   </div>
 
   <div class="cardContainer">
-    <a href="index.php?detailItem" class="card">
+    <a href="index.php?page=itemDetail" class="card">
       <div class="imgCard">
         <img src="./assets/non-static/cardImg1.jpg">
       </div>
@@ -252,7 +266,7 @@
   </div>
 
   <div class="cardContainer">
-    <a href="index.php?detailItem" class="card">
+    <a href="index.php?page=itemDetail" class="card">
       <div class="imgCard">
         <img src="./assets/non-static/cardImg1.jpg">
       </div>
@@ -265,7 +279,7 @@
   </div>
 
   <div class="cardContainer">
-    <a href="index.php?detailItem" class="card">
+    <a href="index.php?page=itemDetail" class="card">
       <div class="imgCard">
         <img src="./assets/non-static/cardImg1.jpg">
       </div>

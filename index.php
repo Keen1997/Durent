@@ -4,6 +4,11 @@
   *
  -->
 
+<?php
+  require './db_connect.php';
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -11,6 +16,8 @@
     <title>Durent</title>
     <!---------------------------------------------------------------------------------------------------------------->
     <meta charset="utf-8">
+    <!---------------------------------------------------------------------------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!---------------------------------------------------------------------------------------------------------------->
     <script src="./js/app.js" charset="utf-8"></script>
     <!---------------------------------------------------------------------------------------------------------------->
@@ -36,24 +43,33 @@
     <!-- Templates for each page and after form page -->
     <main>
       <?php
+        $page = '';
+        if(isset($_GET['page'])){
+          $page = $_GET['page'];
+        }
         // Signup / login component
-        if (isset($_GET['signup'])) require './components/signup.php';
-        else if (isset($_GET['afterSignup'])) require './components/afterSignup.php';
-        else if (isset($_GET['login'])) require './components/login.php';
-        else if (isset($_GET['afterLogin'])) require './components/afterLogin.php';
+        if ($page=='signup') require './components/signup.php';
+        else if ($page=='login') require './components/login.php';
+        else if ($page=='logout') require './components/logout.php';
         // Profile component
-        else if (isset($_GET['addressAdd'])) require './components/profile/addressAdd.php';
-        else if (isset($_GET['addressEdit'])) require './components/profile/addressEdit.php';
-        else if (isset($_GET['afterAddressEdit'])) require './components/profile/afterAddressEdit.php';
-        else if (isset($_GET['basicDataEdit'])) require './components/profile/basicDataEdit.php';
-        else if (isset($_GET['afterBasicDataEdit'])) require './components/profile/afterBasicDataEdit.php';
+        else if ($page=='profile') require './components/profile.php';
+        else if ($page=='addAddress') require './components/addAddress.php';
+        else if ($page=='editAddress') require './components/editAddress.php';
+        else if ($page=='editInfo') require './components/editInfo.php';
         // Rental component
-        else if (isset($_GET['find'])) require './components/find.php';
-        else if (isset($_GET['rentOut'])) require './components/rentOut.php';
-        else if (isset($_GET['afterRental'])) require './components/afterRental.php';
-        else if (isset($_GET['detailItem'])) require './components/detailItem.php';
-        else if (isset($_GET['confirmRent'])) require './components/confirmRent.php';
+        else if ($page=='find') require './components/find.php';
+        else if ($page=='rentOut') require './components/rentOut.php';
+        else if ($page=='itemDetail') require './components/itemDetail.php';
+        else if ($page=='confirmRent') require './components/confirmRent.php';
+        // Staff and Admin component
+        else if ($page=='staff') require './components/staff.php';
+        else if ($page=='admin') require './components/admin.php';
+        // Php logic
+        else if ($page=='afterRental') require './php/afterRental.php';
+        else if ($page=='afterInfoEdit') require './php/afterInfoEdit.php';
+        else if ($page=='afterAddressEdit') require './php/afterAddressEdit.php';
         // Waterfall component in homepage
+        else if ($page=='about') require './components/about.php';
         else require './components/waterfall.php';
       ?>
     </main>

@@ -8,7 +8,7 @@
   $customerID = $_SESSION['customerID'];
 
   $sql = "SELECT * FROM customer WHERE customerID='$customerID'";
-  $result=$con->query($sql);
+  $result = $con->query($sql);
   while ($row = $result->fetch_assoc()) {
     $fname = $row['fname'];
     $lname = $row['lname'];

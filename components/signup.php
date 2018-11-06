@@ -172,7 +172,7 @@
     // Else check dubplicate email in server side
     } else {
       $sql = "SELECT email FROM account WHERE email='$email'";
-      $result=$con->query($sql);
+      $result = $con->query($sql);
       // If dubplicate email, return to signup page with error message
       if($result->num_rows > 0){
         echo "<script>window.location = './index.php?page=signup&email_e=used&email=$email'</script>";

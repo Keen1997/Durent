@@ -1,0 +1,254 @@
+.findTap{
+  width: 100%;
+  margin-bottom: 40px;
+}
+.findTap input{
+  width: 400px;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #DDD;
+  font-size: 18px;
+  color: #888;
+}
+.findTap input::placeholder{
+  color: #A9A9A9;
+  font-style: italic;
+  font-size: 16px;
+  font-family: 'mainFontLigth', sans-serif;
+}
+.findTap input:focus{
+  border-bottom: 1px solid #BBB;
+}
+.findTap img{
+  cursor: pointer;
+}
+.searchTap{
+  text-align: center;
+}
+#searchIcon{
+  margin-right: 12px;
+  margin-left: 12px;
+}
+#categoryState{
+  float: left;
+  color: #7a7a7a;
+  margin-left: 10px;
+  margin-top: 6.5px;
+}
+.nextCategory{
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #78abff;
+}
+#filter{
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+.allCards{
+  margin: auto;
+  width: 1000px;
+  text-align: center;
+}
+.cardContainer{
+  box-sizing: border-box;
+  width: 25%;
+  padding: 10px;
+  display: inline-block;
+  margin: 0px;
+  float: left;
+}
+.card{
+  display: inline-block;
+  width: 230px;
+  border: 1px solid #DDD;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+.card:hover{
+  box-shadow: 10px 10px #F2F2F2;
+}
+.imgCard{
+  text-align: center;
+  padding: 15px;
+  padding-bottom: 0px;
+}
+.imgCard img{
+  max-height: 150px;
+  overflow: hidden;
+  max-width: calc(100%);
+}
+.textCard{
+  font-size: 15px;
+  padding: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+.cardFromDate{
+  margin-left: 10px;
+  margin-right: 10px
+}
+.cardPricePerDay{
+  text-align:right;
+  margin-top: 24px;
+  color: orange;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+@media (max-width:1100px) {
+  .allCards{
+    width: 750px;
+  }
+  .cardContainer{
+    width: 33.33%;
+  }
+}
+
+@media (max-width:775px) {
+  .findTap input{
+    width: 308px;
+  }
+  .allCards{
+    width: 500px;
+  }
+  .cf1{
+    width: 500px;
+    text-align: center;
+  }
+  .cf2{
+    width: 350px;
+    margin: auto;
+  }
+  #categoryState{
+    margin-left: 0px;
+  }
+  #filter{
+    margin-right: 0px;
+  }
+  .cardContainer{
+    width: 100%;
+  }
+  .card{
+    width: 350px;
+  }
+  .imgCard{
+    padding: 7px;
+    width: 48%;
+    box-sizing: border-box;
+    display: inline-block;
+  }
+  .textCard{
+    width: 50%;
+    box-sizing: border-box;
+    padding-left: 0px;
+    display: inline-block;
+    font-size: 14px;
+    float: right;
+  }
+  #categoryState{
+    width: 100%;
+    display: block;
+    margin-bottom: 35px;
+  }
+  #filter{
+    text-align: center;
+  }
+}
+
+@media (max-width:550px) {
+  .allCards{
+    width: 100%;
+  }
+  .cf1{
+    width: 100%;
+  }
+}
+/* Dropdown */
+/* Dropdown */
+.dropbtn {
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  min-width: 120px;
+  margin-right: -12px;
+  margin-left: -14px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  text-align: center;
+  display: none;
+  position: absolute;
+  background-color: #F9F9F9;
+  margin-left: 10%;
+  width: 80%;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  z-index: 1;
+  font-size: 14px;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: inherit;
+  color: #000;
+}
+
+.dropdown-submenu{
+  display: none;
+  position: absolute;
+  left: 100%;
+  background-color: #F9F9F9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  list-style-type: none;
+  top: 0;
+  margin-top: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 12px;
+}
+
+select{
+  border: none;
+  float: right;
+  width: auto;
+  padding: 0px;
+  font-size: 15px;
+  cursor: pointer;
+}
+select::-ms-expand {
+    display: none;
+}
+select:hover{
+  border: none;
+  cursor: pointer;
+}
+select:focus{
+  border: none;
+}
+
+.dropdown2{
+  min-width: 0px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.dropdown-content label{
+  display: block;
+  padding: 20px 0px;
+  cursor: pointer;
+  margin-left: 0px;
+}
+.dropdown-content label:hover{
+  color: #888;
+}

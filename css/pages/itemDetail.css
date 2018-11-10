@@ -6,15 +6,15 @@
 .image{
   display: inline-block;
   max-width: 400px;
-  margin-right: 50px;
   box-sizing: border-box;
 }
 .text{
   text-align: left;
   display: inline-block;
   max-width: 600px;
-  margin-left: 50px;
+  margin-right: 50px;
   box-sizing: border-box;
+  float: right;
 }
 .text h1{
   margin-bottom: 50px;
@@ -68,15 +68,6 @@
   background-image: linear-gradient(#78abff, #417cdd);
 }
 
-@media (max-width:1250px) {
-  .image{
-    margin-right: 25px;
-  }
-  .text{
-    margin-left: 25px;
-  }
-}
-
 @media (max-width:1150px) {
   .image{
     display: block;
@@ -88,6 +79,7 @@
     display: block;
     margin-left: 0px;
     margin: auto;
+    float: none;
   }
 }
 

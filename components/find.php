@@ -4,188 +4,7 @@
   *
  -->
 
-<style>
-  .findTap{
-    width: 100%;
-    margin-bottom: 40px;
-  }
-  .findTap input{
-    width: 400px;
-    border: none;
-    border-radius: 0px;
-    border-bottom: 1px solid #DDD;
-    font-size: 18px;
-    color: #888;
-  }
-  .findTap input::placeholder{
-    color: #A9A9A9;
-    font-style: italic;
-    font-size: 16px;
-    font-family: 'mainFontLigth', sans-serif;
-  }
-  .findTap input:focus{
-    border-bottom: 1px solid #BBB;
-  }
-  .findTap img{
-    cursor: pointer;
-  }
-  .searchTap{
-    text-align: center;
-  }
-  #searchIcon{
-    margin-right: 12px;
-    margin-left: 12px;
-  }
-  #categoryState{
-    float: left;
-    color: #7a7a7a;
-    margin-left: 10px;
-    margin-top: 6.5px;
-  }
-  .categoryName{
-    cursor: pointer;
-  }
-  .nextCategory{
-    margin-left: 15px;
-    margin-right: 15px;
-    color: #78abff;
-  }
-  #filter{
-    text-align: right;
-    margin-right: 10px;
-    margin-top: 50px;
-    margin-bottom: 30px;
-    cursor: pointer;
-  }
-  #filterState{
-    color: #666;
-    font-size: 15px;
-  }
-  .allCards{
-    margin: auto;
-    width: 1000px;
-    text-align: center;
-  }
-  .cardContainer{
-    box-sizing: border-box;
-    width: 25%;
-    padding: 10px;
-    display: inline-block;
-    margin: 0px;
-    float: left;
-  }
-  .card{
-    display: inline-block;
-    width: 230px;
-    border: 1px solid #DDD;
-    border-radius: 12px;
-    text-decoration: none;
-    color: inherit;
-    box-sizing: border-box;
-  }
-  .card:hover{
-    box-shadow: 10px 10px #F2F2F2;
-  }
-  .imgCard{
-    text-align: center;
-    padding: 15px;
-    padding-bottom: 0px;
-  }
-  .imgCard img{
-    height: 150px;
-    overflow: hidden;
-  }
-  .textCard{
-    padding: 15px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    text-align: left;
-  }
-  .cardFromDate{
-    margin-left: 10px;
-    margin-right: 10px
-  }
-  .cardPricePerDay{
-    text-align:right; margin-top:24px;
-    color: orange;
-    margin-bottom: 16px;
-    font-weight: bold;
-  }
-  #filterToggle{
-    display: none;
-  }
-
-  @media (max-width:1100px) {
-    .allCards{
-      width: 750px;
-    }
-    .cardContainer{
-      width: 33.33%;
-    }
-  }
-
-  @media (max-width:775px) {
-    .findTap input{
-      width: 308px;
-    }
-    .allCards{
-      width: 500px;
-    }
-    .cf1{
-      width: 500px;
-      text-align: center;
-    }
-    .cf2{
-      width: 350px;
-      margin: auto;
-    }
-    #categoryState{
-      margin-left: 0px;
-    }
-    #filter{
-      margin-right: 0px;
-    }
-    .cardContainer{
-      width: 100%;
-    }
-    .card{
-      width: 350px;
-    }
-    .imgCard{
-      padding: 7px;
-      width: 48%;
-      box-sizing: border-box;
-      display: inline-block;
-    }
-    .textCard{
-      width: 50%;
-      box-sizing: border-box;
-      padding-left: 0px;
-      display: inline-block;
-      font-size: 14px;
-      float: right;
-    }
-    #categoryState{
-      width: 100%;
-      display: block;
-      margin-bottom: 35px;
-    }
-    #filter{
-      text-align: center;
-    }
-  }
-
-  @media (max-width:550px) {
-    .allCards{
-      width: 100%;
-    }
-    .cf1{
-      width: 100%;
-    }
-  }
-
-
-</style>
+<link rel="stylesheet" href="./css/pages/find.css">
 
 <!-- Display form login -->
 <div class="findTap">
@@ -200,97 +19,181 @@
   <div class="cf1">
     <div class="cf2">
       <span id="categoryState">
-        <span class="categoryName">Categories</span>
-        <span class="nextCategory">></span>
-        <span class="categoryName">watch</span>
-        <span class="nextCategory">></span>
-        <span class="categoryName">health</span>
+        <div class="dropdown">
+        <button class="dropbtn" style="color:inherit; margin-top:-20px;">Categories</button>
+          <div class="dropdown-content">
+            <a href="index.php?page=find">all</a>
+            <?php
+              // Select and show all category
+              $sql = "SELECT name, categoryID FROM category";
+              $result = $con->query($sql);
+              while($row = $result->fetch_assoc()){
+                $categoryName = $row['name'];
+                echo "<a class='dropdown-menu' href='index.php?page=find&menu=$categoryName'>$categoryName</a>";
+                // Select and show all submenu if parent have
+                $sql = "SELECT name FROM subCategory WHERE categoryID=".$row['categoryID'];
+                $result2 = $con->query($sql);
+                if($result2->num_rows > 0){
+                  echo "<ul class='dropdown-submenu'>";
+                  while($row2 = $result2->fetch_assoc()){
+                    $subCategoryName = $row2['name'];
+                    echo "<li><a href='?page=find&menu=$categoryName&submenu=$subCategoryName'>$subCategoryName</a></li>";
+                  }
+                  echo "</ul>";
+                }
+              }
+            ?>
+          </div>
+        </div>
+        <?php
+        // Show current menu and submenu
+          if(isset($_GET['menu'])){
+            echo "<span class='nextCategory'>></span>
+                  <span>".$_GET['menu']."</span>";
+            if(isset($_GET['submenu'])){
+              echo "<span class='nextCategory'>></span>
+                    <span>".$_GET['submenu']."</span>";
+            }
+          } else {
+            echo "<span class='nextCategory'>></span>
+                  <span>all</span>";
+          }
+        ?>
       </span>
       <div id="filter">
         <img src="./assets/static/filter.png" width="20px" style="margin-right:8px; opacity:0.45;">
-        <span id="filterState">Price</span>
+        <div class="dropdown dropdown2">
+        <button class="dropbtn">date</button>
+          <div class="dropdown-content dropdown-content2">
+            <label onclick="filterUrl('price')">price</label>
+            <label onclick="filterUrl('character')">character</label>
+            <label onclick="filterUrl('date')">date</label>
+          </div>
       </div>
     </div>
   </div>
 
-  <div class="cardContainer">
-    <a href="index.php?page=itemDetail" class="card">
-      <div class="imgCard">
-        <img src="./assets/non-static/cardImg1.jpg">
-      </div>
-      <div class="textCard">
-        <h4>My new apple watch , buy 1 month , never use</h4>
-        <p>14-10-18 <span class="cardFromDate">to</span>20-11-18</p>
-        <div class="cardPricePerDay">31$ per day</div>
-      </div>
-    </a>
-  </div>
+  <?php
+    $sql = "SELECT * FROM item";
+    // If have category and subCategory, add into where category condition in sql
+    // Category
+    if(isset($_GET['menu'])){
+      $menuName = str_replace('', '%20', $_GET['menu']);
+      $sql_menu = "SELECT categoryID FROM category WHERE name='$menuName'";
+      $result_menu = $con->query($sql_menu);
+      while($row_menu = $result_menu->fetch_assoc()){
+        $menuID = $row_menu['categoryID'];
+      }
+      $sql = $sql." WHERE category='$menuID'";
+      // SubCategory
+      if(isset($_GET['submenu'])){
+        $submenuName = str_replace('', '%20', $_GET['submenu']);
+        $sql_submenu = "SELECT subCategoryID FROM subCategory WHERE name='$submenuName'";
+        $result_submenu = $con->query($sql_submenu);
+        while($row_submenu = $result_submenu->fetch_assoc()){
+          $submenuID = $row_submenu['subCategoryID'];
+        }
+        $sql = $sql." AND subCategory='$submenuID'";
+      }
+    }
+    // If have filter, add into order condition in sql
+    if(isset($_GET['order'])){
 
-  <div class="cardContainer">
-    <a href="index.php?page=itemDetail" class="card">
-      <div class="imgCard">
-        <img src="./assets/non-static/cardImg1.jpg">
-      </div>
-      <div class="textCard">
-        <h4>My new apple watch , buy 1 month , never use</h4>
-        <p>14-10-18 <span class="cardFromDate">to</span>20-11-18</p>
-        <div class="cardPricePerDay">31$ per day</div>
-      </div>
-    </a>
-  </div>
+      if($_GET['order']=='priceDesc'){
+        $sql = $sql." ORDER BY price DESC";
 
-  <div class="cardContainer">
-    <a href="index.php?page=itemDetail" class="card">
-      <div class="imgCard">
-        <img src="./assets/non-static/cardImg1.jpg">
-      </div>
-      <div class="textCard">
-        <h4>My new apple watch , buy 1 month , never use</h4>
-        <p>14-10-18 <span class="cardFromDate">to</span>20-11-18</p>
-        <div class="cardPricePerDay">31$ per day</div>
-      </div>
-    </a>
-  </div>
+      } else if($_GET['order']=='priceAsc'){
+        $sql = $sql." ORDER BY price ASC";
 
-  <div class="cardContainer">
-    <a href="index.php?page=itemDetail" class="card">
-      <div class="imgCard">
-        <img src="./assets/non-static/cardImg1.jpg">
-      </div>
-      <div class="textCard">
-        <h4>My new apple watch , buy 1 month , never use</h4>
-        <p>14-10-18 <span class="cardFromDate">to</span>20-11-18</p>
-        <div class="cardPricePerDay">31$ per day</div>
-      </div>
-    </a>
-  </div>
+      } else if($_GET['order']=='dateDesc'){
+        $sql = $sql." ORDER BY dateFrom DESC";
 
-  <div class="cardContainer">
-    <a href="index.php?page=itemDetail" class="card">
-      <div class="imgCard">
-        <img src="./assets/non-static/cardImg1.jpg">
-      </div>
-      <div class="textCard">
-        <h4>My new apple watch , buy 1 month , never use</h4>
-        <p>14-10-18 <span class="cardFromDate">to</span>20-11-18</p>
-        <div class="cardPricePerDay">31$ per day</div>
-      </div>
-    </a>
-  </div>
+      } else if($_GET['order']=='dateAsc'){
+        $sql = $sql." ORDER BY dateFrom ASC";
 
-  <div class="cardContainer">
-    <a href="index.php?page=itemDetail" class="card">
-      <div class="imgCard">
-        <img src="./assets/non-static/cardImg1.jpg">
+      } else if($_GET['order']=='characterDesc'){
+        $sql = $sql." ORDER BY title DESC";
+
+      } else if($_GET['order']=='characterAsc'){
+        $sql = $sql." ORDER BY title ASC";
+      }
+    }
+
+    $result = $con->query($sql);
+    while($row = $result->fetch_assoc()){
+      $title = $row['title'];
+      $id = $row['itemID'];
+      ?>
+      <div class="cardContainer">
+        <a href="index.php?page=itemDetail&id=<?php echo $id; ?>" class="card">
+          <div class="imgCard">
+            <?php
+              $sql = "SELECT imageSrc FROM itemImage
+                      WHERE itemID = '$id'
+                      LIMIT 1";
+              $resultImg = $con -> query($sql);
+              while ($rowImg = $resultImg->fetch_assoc()){
+                $imgSrc = $rowImg['imageSrc'];
+                echo "<img src='$imgSrc'>";
+              }
+            ?>
+          </div>
+          <div class="textCard">
+            <h4><?php echo $title; ?></h4>
+            <p><?php echo $row['dateFrom']; ?> <span class="cardFromDate">to</span><?php echo $row['dateTo']; ?></p>
+            <div class="cardPricePerDay"><?php echo $row['price']; ?>$ per day</div>
+          </div>
+        </a>
       </div>
-      <div class="textCard">
-        <h4>My new apple watch , buy 1 month , never use</h4>
-        <p>14-10-18 <span class="cardFromDate">to</span>20-11-18</p>
-        <div class="cardPricePerDay">31$ per day</div>
-      </div>
-    </a>
-  </div>
+      <?php
+    }
+  ?>
 
 </div>
 
 <div style="clear:left"></div>
+
+<script>
+  // To Set height of every cards equal, add line space between image and text in each cards
+  $('.cardContainer').each(function(){
+    let h = $(this).height()
+    $(this).find('.textCard').css({'padding-top': 325-h})
+  })
+
+  // Toggle submenu when hover parent or not when no hover and set top position of submenu to equal parent
+  $('.dropdown-menu').hover(function(){
+    $(this).next('.dropdown-submenu')
+    .css({'display':'block',
+          'top': $(this).position().top
+    })
+  },function(){
+    $(this).next('.dropdown-submenu').css({'display':'none'})
+  })
+
+  // Toggle submenu when hover submenu or not when no hover
+  $('.dropdown-submenu').hover(function(){
+    $(this).css({'display':'block'})
+  },function(){
+    $(this).css({'display':'none'})
+  })
+
+  // When click filter, send filter to order query string
+  function filterUrl(filter){
+    let newUrl = window.location.href
+    if(window.location.href.indexOf('&order')>-1){
+      newUrl = newUrl.substring(0, newUrl.indexOf('&order'))
+    }
+    newUrl += '&order=' + filter
+    if(window.location.href.indexOf(filter)>-1){
+      if(window.location.href.indexOf(filter+'Asc')>-1){
+        newUrl += 'Desc'
+      } else {
+        newUrl += 'Asc'
+      }
+    } else {
+      newUrl += 'Desc'
+    }
+
+    window.location = newUrl
+  }
+</script>

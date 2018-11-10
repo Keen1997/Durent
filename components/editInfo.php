@@ -4,6 +4,14 @@
   *
  -->
 
+ <?php
+   if(!isset($_SESSION['email']) && !isset($_SESSION['customerID'])){
+     echo "<script>
+            window.location = './index.php?page=login'
+          </script>";
+   }
+ ?>
+
 <script src="plugins/inputmark\jquery.inputmask.bundle.js"></script>
 
 <link rel="stylesheet" href="plugins/intl-tel-input\intlTelInput.css">

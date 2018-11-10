@@ -65,7 +65,8 @@
         else if ($page=='staff') require './components/staff.php';
         else if ($page=='admin') require './components/admin.php';
         // Php logic
-        else if ($page=='afterRental') require './php/afterRental.php';
+        else if ($page=='afterRentOut') require './php/afterRentOut.php';
+        else if ($page=='afterRentItem') require './php/afterRentItem.php';
         else if ($page=='afterInfoEdit') require './php/afterInfoEdit.php';
         else if ($page=='afterAddressEdit') require './php/afterAddressEdit.php';
         // Waterfall component in homepage

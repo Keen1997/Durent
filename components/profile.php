@@ -4,6 +4,14 @@
   *
  -->
 
+ <?php
+   if(!isset($_SESSION['email']) && !isset($_SESSION['customerID'])){
+     echo "<script>
+            window.location = './index.php?page=login'
+          </script>";
+   }
+ ?>
+
 <?php
   $customerID = $_SESSION['customerID'];
 

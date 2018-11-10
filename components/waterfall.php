@@ -5,7 +5,7 @@
  -->
 
 <!-- Style -->
-<link rel="stylesheet" href="./css/Waterfall.css">
+<link rel="stylesheet" href="./css/pages/Waterfall.css">
 
 <!-- Display -->
 <div class="fluidTop">

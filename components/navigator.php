@@ -66,11 +66,12 @@ nav a:hover{
 /* Dropdown */
 .dropbtn {
   color: #FFF;
-  padding: 16px;
-  font-size: 16px;
+  padding: 14px 16px;
+  font-size: 15.5px;
   border: none;
   cursor: pointer;
   min-width: 120px;
+  font-family: 'mainFontLigth', sans-serif;
 }
 
 .dropdown {
@@ -117,11 +118,14 @@ nav a:hover{
   }
   nav li{
     display: inline-block;
-    padding: 10px 3px 10px;
+    padding: 14px 3px 10px;
   }
   nav .container{
     max-width: 100%;
     width: auto;
+  }
+  .dropbtn {
+    font-size: 14px;
   }
 }
 
@@ -160,7 +164,14 @@ nav a:hover{
       </a></li>
     </div>
     <div class="navCenter">
-      <li><a href="index.php?page=about">About</a></li>
+      <!-- <li><a href="index.php?page=about">About</a></li> -->
+      <div class="dropdown">
+      <button class="dropbtn" style="margin:-16px;">About</button>
+        <div class="dropdown-content" style="top:150%;">
+          <a href="index.php?page=about">about us</a>
+          <a href="index.php?page=structure">structure</a>
+        </div>
+      </div>
       <li><a href="index.php?page=find">Find</a></li>
       <li><a href="index.php?page=rentOut">Rent</a></li>
     </div>
@@ -175,7 +186,7 @@ nav a:hover{
       <button class="dropbtn"><?php echo $email; ?></button>
         <div class="dropdown-content">
           <a href="index.php?page=profile">profile</a>
-          <a href="index.php?page=profile">history</a>
+          <a href="index.php?page=profile&pos=history">history</a>
           <a href="index.php?page=logout">logout</a>
         </div>
       </div>

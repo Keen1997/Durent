@@ -99,13 +99,11 @@
     <img src="./assets/static/waterfalls/exchange.jpg">
   </div>
 
-  <p id='width'>test</p>
 </div>
 
 <script>
   // Swap image for responsive
   function responsive() {
-    $('#width').html($(window).width())
     if ($(window).width() < 650) {
       $("#beat").attr("src","./assets/static/waterfalls/microphone.jpg")
     } else {

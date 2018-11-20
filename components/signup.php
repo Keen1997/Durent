@@ -181,8 +181,8 @@
         // Hash password
         $hashPassword = password_hash($password, PASSWORD_DEFAULT);
         // Insert into table
-        $sql = "INSERT INTO account (email, password, type, status)
-                VALUES ('$email', '$hashPassword', 'customer', 'activated')";
+        $sql = "INSERT INTO account (email, password, type)
+                VALUES ('$email', '$hashPassword', 'customer')";
         $result=$con->query($sql);
         if($result) {
           $sql = "INSERT INTO customer (accountID)

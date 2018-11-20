@@ -150,13 +150,17 @@
     font-size: 12px;
     font-style: italic;
   }
-  .deleteAddress{
+  .deleteAddress, .deleteItem{
     float: right;
     margin-top: 12px;
     font-size: 18px;
     color: #777;
     cursor: pointer;
     font-family: cursive;
+  }
+  .deleteItem{
+    font-weight: lighter;
+    float: none;
   }
   .formCenter{
     margin-bottom: 40px;
@@ -323,15 +327,6 @@
         <a href="index.php?page=editInfo&focus=paymentType"><img class="edit" src="./assets/static/edit.png"></a>
       </div>
     </div>
-    <!-- Status -->
-    <div class="">
-      <div  class="keySide">
-        <label>Status</label>
-      </div
-      ><div class="dataSide">
-        <label id="customer_status">activated</label>
-      </div>
-    </div>
 
     <div style="clear:left"></div>
   </div>
@@ -360,6 +355,7 @@
     <a href="index.php?page=addAddress"><button id="addAddress">+</button><br><span id="addAddressText">add address</span></a>
   </div>
 
+  <span id="scrollHistory"></span>
 
   <!-- Info and address tab -->
   <div class="tab">
@@ -370,13 +366,40 @@
   <!-- History panel -->
   <div id="historyPanel" class="panel panelTable">
     <table>
-      <tr class="tableHead">
-        <th>DateFrom</th>
-        <th>DateTo</th>
-        <th>Item</th>
-        <th>Status</th>
-      </tr>
-      <tr>
+      <?php
+        $sql = "SELECT * FROM rental WHERE customerID='$_SESSION[customerID]'";
+        $result = $con->query($sql);
+        if($result && mysqli_num_rows($result)>0){
+          ?>
+          <tr class="tableHead">
+            <th>DateFrom</th>
+            <th>DateTo</th>
+            <th>Item</th>
+            <th>Status</th>
+          </tr>
+          <?php
+          while($row = $result->fetch_assoc()){
+            $sql_item = "SELECT * FROM item WHERE itemID='$row[itemID]'";
+            $result_item = $con->query($sql_item);
+            while($row_item = $result_item->fetch_assoc()){
+              $itemTitle = $row_item['title'];
+            }
+            ?>
+              <tr>
+                <td><?php echo $row['dateFrom']; ?></td>
+                <td><?php echo $row['dateTo']; ?></td>
+                <td class="itemName"><a href="./index.php?page=itemDetail&id=<?php echo $row['itemID']; ?>"><?php echo $itemTitle; ?></a></td>
+                <td class="status"><?php echo $row['status']; ?></td>
+              </tr>
+            <?php
+          }
+        } else {
+          echo "<br><br>You never rent anything.<br><br>";
+          echo "Click <u><a href='./index.php?page=find'>here</a></u> to find somethings !!<br><br><br><br>";
+        }
+
+      ?>
+      <!-- <tr>
         <td>08-02-2018</td>
         <td>10-07-2018</td>
         <td class="itemName"><a href="#">On Stage MS7201B</a></td>
@@ -399,19 +422,48 @@
         <td>11-14-2018</td>
         <td class="itemName"><a href="#">Marantz HD-AMP1</a></td>
         <td class="status">renting</td>
-      </tr>
+      </tr> -->
     </table>
-    <div class="total">total 4</div>
+    <?php if($result && mysqli_num_rows($result)>0){ ?>
+      <div class="total">total <?php echo mysqli_num_rows($result); ?></div>
+    <?php } ?>
   </div>
   <!-- Item panel -->
   <div id="itemPanel" class="panel panelTable">
     <table>
-      <tr class="tableHead">
-        <th>Item</th>
-        <th>Status</th>
-        <th>Rented no</th>
-      </tr>
-      <tr>
+      <?php
+        $sql = "SELECT * FROM item WHERE customerID='$_SESSION[customerID]'";
+        $result = $con->query($sql);
+        if(mysqli_num_rows($result)>0){
+          ?>
+          <tr class="tableHead">
+            <th>DateFrom</th>
+            <th>DateTo</th>
+            <th>Item</th>
+            <th>Status</th>
+          </tr>
+          <?php
+            while ($row = $result->fetch_assoc()) {
+              ?>
+              <tr>
+                <td><?php echo $row['dateFrom']; ?></td>
+                <td><?php echo $row['dateTo']; ?></td>
+                <td class="itemName">
+                  <a href="./index.php?page=itemDetail&id=<?php echo $row['itemID']; ?>"><?php echo $row['title']; ?></a>
+                  <a href="./index.php?page=editItem&id=<?php echo $row['itemID']; ?>"><img class="edit" src="./assets/static/edit.png"></a>
+                  <span id="<?php echo $row['itemID']; ?>" class="deleteItem">x</span>
+                </td>
+                <td class="status"><?php echo $row['status']; ?></td>
+              </tr>
+              <?php
+            }
+        } else {
+          echo "<br><br>You never rent your items.<br><br>";
+          echo "Click <u><a href='./index.php?page=rentOut'>here</a></u> to rent somethings !!<br><br><br><br>";
+        }
+      ?>
+
+      <!-- <tr>
         <td class="itemName"><a href="#">Egara Sharkskin Slim Fit Suit</a></td>
         <td class="status">returned</td>
         <td>4</td>
@@ -430,13 +482,21 @@
         <td class="itemName"><a href="#">Awearness Kenneth Cole Slim Fit Suit</a></td>
         <td class="status">renting</td>
         <td>12</td>
-      </tr>
+      </tr> -->
     </table>
-    <div class="total">total 4</div>
+    <?php if(mysqli_num_rows($result)>0){ ?>
+      <div class="total">total <?php echo mysqli_num_rows($result); ?></div>
+    <?php } ?>
   </div>
 
 
 <script>
+
+  if(window.location.search.indexOf('pos=history')>-1){
+    $([document.documentElement, document.body]).animate({
+      scrollTop: $("#scrollHistory").offset().top-80
+    }, 500)
+  }
 
   $('#infoTab').click(function(){
     $('#infoPanel').css({'display' : 'block'})
@@ -472,13 +532,9 @@
       $(this).css({'color' : '#e68a00'})
     } else if ($(this).html()=='deliver') {
       $(this).css({'color' : '#CC0'})
-    }
-  })
-
-  $('#customer_status').each(function(){
-    if($(this).html()=='activated'){
+    } else if ($(this).html()=='availiable'){
       $(this).css({'color' : '#093'})
-    } else if ($(this).html()=='none activated') {
+    } else if ($(this).html()=='none availiable') {
       $(this).css({'color' : '#e68a00'})
     } else if ($(this).html()=='ban') {
       $(this).css({'color' : '#F00'})
@@ -490,6 +546,15 @@
       if (confirm("Do you sure to delete ?")) {
         let addressID = $(this).attr('id')
         window.location = 'index.php?page=profile&deleteID='+addressID
+      }
+    })
+  })
+
+  $('.deleteItem').each(function(){
+    $(this).click(function(){
+      if (confirm("Do you sure to unrent this item ?")) {
+        let itemID = $(this).attr('id')
+        window.location = 'index.php?page=afterDeleteItem&id='+itemID
       }
     })
   })

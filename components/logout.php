@@ -1,4 +1,3 @@
 <?php
-  unset($_SESSION['email']);
-  if(isset($_SESSION['customerID'])) unset($_SESSION['customerID']);
+  session_destroy();
   echo "<script>window.location = './index.php'</script>";

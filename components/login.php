@@ -96,11 +96,13 @@
       if(password_verify($password, $hashPassword)){
         $sql = "SELECT customerID FROM customer WHERE accountID='$accountID'";
         $result=$con->query($sql);
-        if($result){
+        if($result->num_rows>0){
           $customerID = mysqli_fetch_assoc($result)['customerID'];
           $_SESSION['email'] = $email;
           $_SESSION['customerID'] = $customerID;
           echo "<script>window.location = './index.php'</script>";
+        } else {
+          echo "<script>window.location = './index.php?page=login&email_e=notExist&email=$email'</script>";
         }
 
       } else {

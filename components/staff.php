@@ -44,10 +44,10 @@
   }
   .logout{
     text-align: right;
-    margin-top: -120px;
+    /* margin-top: -120px; */
   }
   .tab{
-    margin-top: -25px;
+    /* margin-top: -25px; */
   }
   .tab button{
     margin-left: 10px;
@@ -180,11 +180,19 @@
   }
 </style>
 
+<?php
+
+  if(!isset($_SESSION['staffID']) || !isset($_SESSION['staffEmail'])){
+    echo "<script>window.location = './index.php'</script>";
+  }
+
+?>
+
 <!-- Display staff -->
 <div class="container template">
 
   <div class="logout">
-    <button class="border">logout</button>
+    <a href="index.php?page=logout"><button class="border">logout</button></a>
   </div>
   <div class="tab">
     <button id="customer_btn" class="border active">customer table</button>
@@ -232,18 +240,24 @@
         <th>email</th>
         <th>payment</th>
         <th>payment type</th>
-        <th>status</th>
       </tr>
+      <?php
+        $sql = "SELECT * FROM customer, account WHERE customer.accountID=account.accountID";
+        $result = $con->query($sql);
+        while($row = $result->fetch_assoc()){
+      ?>
       <tr>
-        <td>1</td>
-        <td>Narongchai</td>
-        <td>Jaroonpipatkul</td>
-        <td>063-191-3467</td>
-        <td>narongchaioioi@gmail.com</td>
-        <td>XXXX-XXXX-XXXX-1234</td>
-        <td>VISA</td>
-        <td class="customer_status">activated<img class="edit" src="./assets/static/edit.png"></td>
+        <td><?php echo $row['customerID']; ?></td>
+        <td><?php echo $row['fname']; ?></td>
+        <td><?php echo $row['lname']; ?></td>
+        <td><?php echo $row['tel']; ?></td>
+        <td><?php echo $row['email']; ?></td>
+        <td><?php echo $row['payment']; ?></td>
+        <td><?php echo $row['paymentType']; ?></td>
       </tr>
+      <?php
+        }
+      ?>
     </table>
     <div class="border">total 1 records</div>
   </div>
@@ -280,6 +294,7 @@
     <table>
       <tr class="">
         <th>addressID</th>
+        <th>name</th>
         <th>houseNo</th>
         <th>alley</th>
         <th>street</th>
@@ -289,17 +304,26 @@
         <th>zipcode</th>
         <th>customerID</th>
       </tr>
+      <?php
+        $sql = "SELECT * FROM address";
+        $result = $con->query($sql);
+        while($row = $result->fetch_assoc()){
+      ?>
       <tr>
-        <td>1</td>
-        <td>12/34</td>
-        <td>my road 12</td>
-        <td>my road</td>
-        <td>my sub district</td>
-        <td>my district</td>
-        <td>my province</td>
-        <td>my zipcode</td>
-        <td class="modal-data">1</td>
+        <td><?php echo $row['addressID']; ?></td>
+        <td><?php echo $row['name']; ?></td>
+        <td><?php echo $row['houseNo']; ?></td>
+        <td><?php echo $row['subStreet']; ?></td>
+        <td><?php echo $row['street']; ?></td>
+        <td><?php echo $row['district']; ?></td>
+        <td><?php echo $row['subDistrict']; ?></td>
+        <td><?php echo $row['province']; ?></td>
+        <td><?php echo $row['zipcode']; ?></td>
+        <td><?php echo $row['customerID']; ?></td>
       </tr>
+      <?php
+        }
+      ?>
     </table>
     <div class="border">total 1 records</div>
   </div>
@@ -323,23 +347,27 @@
         <th>title</th>
         <th>description</th>
         <th>price(per day)</th>
-        <th>image</th>
         <th>dateFrom</th>
         <th>dateTo</th>
-        <th>status</th>
         <th>customerID</th>
       </tr>
+      <?php
+        $sql = "SELECT * FROM item";
+        $result = $con->query($sql);
+        while($row = $result->fetch_assoc()){
+      ?>
       <tr>
-        <td>1</td>
-        <td>My new Apple Wat...</td>
-        <td>The Apple Watch ...</td>
-        <td>$31</td>
-        <td class="modal-data">img</td>
-        <td>14-10-2018</td>
-        <td>21-11-2018</td>
-        <td class="item_status">availiable<img class="edit" src="./assets/static/edit.png"></td>
-        <td class="modal-data">1</td>
+        <td><?php echo $row['itemID']; ?></td>
+        <td><?php echo $row['title']; ?></td>
+        <td><?php echo $row['description']; ?></td>
+        <td><?php echo $row['price']; ?></td>
+        <td><?php echo $row['dateFrom']; ?></td>
+        <td><?php echo $row['dateTo']; ?></td>
+        <td><?php echo $row['customerID']; ?></td>
       </tr>
+      <?php
+        }
+      ?>
     </table>
     <div class="border">total 1 records</div>
   </div>
@@ -383,46 +411,24 @@
         <th>staffID</th>
         <th>addressID</th>
       </tr>
+      <?php
+        $sql = "SELECT * FROM rental";
+        $result = $con->query($sql);
+        while($row = $result->fetch_assoc()){
+      ?>
       <tr>
-        <td>213</td>
-        <td class="modal-data">12</td>
-        <td>08-02-2018</td>
-        <td>10-07-2018</td>
-        <td class="status">returned<img class="edit" src="./assets/static/edit.png"></td>
-        <td class="modal-data">21</td>
-        <td>5</td>
-        <td class="modal-data">45</td>
+        <td><?php echo $row['rentalID']; ?></td>
+        <td><?php echo $row['itemID']; ?></td>
+        <td><?php echo $row['dateFrom']; ?></td>
+        <td><?php echo $row['dateTo']; ?></td>
+        <td><?php echo $row['status']; ?></td>
+        <td><?php echo $row['customerID']; ?></td>
+        <td><?php echo $row['staffID']; ?></td>
+        <td><?php echo $row['addressID']; ?></td>
       </tr>
-      <tr>
-        <td>228</td>
-        <td class="modal-data">23</td>
-        <td>08-05-2018</td>
-        <td>10-11-2018</td>
-        <td class="status">returned<img class="edit" src="./assets/static/edit.png"></td>
-        <td class="modal-data">21</td>
-        <td>6</td>
-        <td class="modal-data">11</td>
-      </tr>
-      <tr>
-        <td>303</td>
-        <td class="modal-data">27</td>
-        <td>09-25-2018</td>
-        <td>10-25-2018</td>
-        <td class="status">checking<img class="edit" src="./assets/static/edit.png"></td>
-        <td class="modal-data">12</td>
-        <td>5</td>
-        <td class="modal-data">22</td>
-      </tr>
-      <tr>
-        <td>397</td>
-        <td class="modal-data">43</td>
-        <td>10-20-2018</td>
-        <td>11-14-2018</td>
-        <td class="status">renting<img class="edit" src="./assets/static/edit.png"></td>
-        <td class="modal-data">63</td>
-        <td>7</td>
-        <td class="modal-data">62</td>
-      </tr>
+      <?php
+        }
+      ?>
     </table>
     <div class="border">total 4 records</div>
   </div>

@@ -60,17 +60,23 @@
         else if ($page=='find') require './components/find.php';
         else if ($page=='rentOut') require './components/rentOut.php';
         else if ($page=='itemDetail') require './components/itemDetail.php';
+        else if ($page=='editItem') require './components/editItem.php';
         else if ($page=='confirmRent') require './components/confirmRent.php';
         // Staff and Admin component
         else if ($page=='staff') require './components/staff.php';
         else if ($page=='admin') require './components/admin.php';
+        else if ($page=='staffLogin') require './components/staffLogin.php';
+        else if ($page=='adminLogin') require './components/adminLogin.php';
         // Php logic
         else if ($page=='afterRentOut') require './php/afterRentOut.php';
         else if ($page=='afterRentItem') require './php/afterRentItem.php';
         else if ($page=='afterInfoEdit') require './php/afterInfoEdit.php';
         else if ($page=='afterAddressEdit') require './php/afterAddressEdit.php';
+        else if ($page=='afterEditItem') require './php/afterEditItem.php';
+        else if ($page=='afterDeleteItem') require './php/afterDeleteItem.php';
         // Waterfall component in homepage
         else if ($page=='about') require './components/about.php';
+        else if ($page=='structure') require './components/structure.php';
         else require './components/waterfall.php';
       ?>
     </main>

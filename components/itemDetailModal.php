@@ -40,222 +40,226 @@
           while ($row = $result->fetch_assoc()) {
             $title = $row['title'];
             $description = $row['description'];
+            $status = $row['status'];
             $dateFrom = $row['dateFrom'];
             $dateTo = $row['dateTo'];
             $price = $row['price'];
           }
 
-      ?>
-      <form class="" action="index.php?page=itemDetail&id=<?php echo $_GET['id']; ?>" method="post">
-        <span class="close">&times;</span>
-        <div style="clear:right"></div>
+            if($status=='availiable'){
+              ?>
+              <form class="" action="index.php?page=itemDetail&id=<?php echo $_GET['id']; ?>" method="post">
+                <span class="close">&times;</span>
+                <div style="clear:right"></div>
 
 
-        <!-- Info section -->
-        <div class="info section">
-          <h3>Your info</h3>
-          <!-- Name -->
-          <div class="">
-            <div  class="keySide">
-              <label>Name</label>
-            </div
-            ><div class="dataSide">
-              <label><?php echo $fname." ".$lname; ?></label>
-            </div>
-          </div>
-          <!-- Tel no -->
-          <div class="">
-            <div  class="keySide">
-              <label>Tel no</label>
-            </div
-            ><div class="dataSide">
-              <label><?php echo $tel; ?></label>
-            </div>
-          </div>
-          <!-- Email -->
-          <div class="">
-            <div  class="keySide">
-              <label>Email</label>
-            </div
-            ><div class="dataSide">
-              <label><?php echo $_SESSION['email']; ?></label>
-            </div>
-          </div>
-          <div style="clear:left"></div>
-        </div>
-
-        <div class="lineBreak"></div>
-
-        <!-- Address section -->
-        <div class="address section">
-          <div class="">
-            <div  class="keySide">
-              <label>Address</label>
-            </div
-            ><div class="dataSide">
-              <select class="" name="address">
-                <?php
-                  for ($i = 0; $i<count($addressNameArr); $i++){
-                    echo "<option value='$i'>$addressNameArr[$i]</option>";
-                  }
-                ?>
-              </select>
-            </div>
-            <div class="addressDetail">
-              <p id="addressDetail"></p>
-            </div>
-            <input type="text" name="address" style="display:none">
-          </div>
-        </div>
-        <div style="clear:left"></div>
-
-        <div class="lineBreak"></div>
-
-        <div style="text-align:center">
-          <button type="button" id="next_btn" class="btn">Next</button>
-        </div>
-
-      </div>
-
-      <div class="modal-content" id="modal-content2">
-        <span class="close">&times;</span>
-        <div style="clear:right"></div>
-        <!-- Item section -->
-        <div class="item section">
-          <h3>Item Detail</h3>
-          <!-- Item title -->
-          <h1><?php echo $title; ?></h1>
-          <!-- Item description -->
-          <div class="description">
-            <h3>Description :</h3>
-            <p><?php echo $description; ?></p>
-          </div>
-          <!-- Price -->
-          <div id="price_modal">
-            <label>$<?php echo $price; ?> per day</label>
-          </div>
-
-          <!-- Old Date -->
-          <div class="date_modal">
-            <label><i>(<?php echo $dateFrom; ?>)<i></label>
-            <label> - </label>
-            <label><i>(<?php echo $dateTo; ?>)<i></label>
-          </div>
-          <div class="date_modal_toggle">
-            <div class="">
-              <div class="left">
-                <label>from</label>
-              </div
-              ><div class="right">
-                <label><i>(<?php echo $dateFrom; ?>)<i></label>
-              </div>
-            </div>
-            <div class="">
-              <div class="left">
-                <label>to</label>
-                </div
-                ><div class="right">
-                  <label><i>(<?php echo $dateTo; ?>)<i></label>
+                <!-- Info section -->
+                <div class="info section">
+                  <h3>Your info</h3>
+                  <!-- Name -->
+                  <div class="">
+                    <div  class="keySide">
+                      <label>Name</label>
+                    </div
+                    ><div class="dataSide">
+                      <label><?php echo $fname." ".$lname; ?></label>
+                    </div>
+                  </div>
+                  <!-- Tel no -->
+                  <div class="">
+                    <div  class="keySide">
+                      <label>Tel no</label>
+                    </div
+                    ><div class="dataSide">
+                      <label><?php echo $tel; ?></label>
+                    </div>
+                  </div>
+                  <!-- Email -->
+                  <div class="">
+                    <div  class="keySide">
+                      <label>Email</label>
+                    </div
+                    ><div class="dataSide">
+                      <label><?php echo $_SESSION['email']; ?></label>
+                    </div>
+                  </div>
+                  <div style="clear:left"></div>
                 </div>
-              </div>
 
-            </div>
-          <!-- New Date -->
-          <div class="date_modal">
-            <label>Rent From</label>
-            <input type="date" name="dateFrom">
-            <label> to </label>
-            <input type="date" name="dateTo">
-          </div>
-          <div class="date_modal_toggle">
-            <div class="">
-              <div class="left">
-                <label>from</label>
-              </div
-              ><div class="right">
-                <input type="date" name="dateFromToggle">
-              </div>
-            </div>
-            <div class="">
-              <div class="left">
-                <label>to</label>
-                </div
-                ><div class="right">
-                  <input type="date" name="dateToToggle">
+                <div class="lineBreak"></div>
+
+                <!-- Address section -->
+                <div class="address section">
+                  <div class="">
+                    <div  class="keySide">
+                      <label>Address</label>
+                    </div
+                    ><div class="dataSide">
+                      <select class="" name="address">
+                        <?php
+                          for ($i = 0; $i<count($addressNameArr); $i++){
+                            echo "<option value='$i'>$addressNameArr[$i]</option>";
+                          }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="addressDetail">
+                      <p id="addressDetail"></p>
+                    </div>
+                    <input type="text" name="address" style="display:none">
+                  </div>
                 </div>
+                <div style="clear:left"></div>
+
+                <div class="lineBreak"></div>
+
+                <div style="text-align:center">
+                  <button type="button" id="next_btn" class="btn">Next</button>
+                </div>
+
               </div>
 
-            </div>
+              <div class="modal-content" id="modal-content2">
+                <span class="close">&times;</span>
+                <div style="clear:right"></div>
+                <!-- Item section -->
+                <div class="item section">
+                  <h3>Item Detail</h3>
+                  <!-- Item title -->
+                  <h1><?php echo $title; ?></h1>
+                  <!-- Item description -->
+                  <div class="description">
+                    <h3>Description :</h3>
+                    <p><?php echo $description; ?></p>
+                  </div>
+                  <!-- Price -->
+                  <div id="price_modal">
+                    <label>$<?php echo $price; ?> per day</label>
+                  </div>
 
-          </div>
-          <div style="clear:left"></div>
+                  <!-- Old Date -->
+                  <div class="date_modal">
+                    <label><i>(<?php echo $dateFrom; ?>)<i></label>
+                    <label> - </label>
+                    <label><i>(<?php echo $dateTo; ?>)<i></label>
+                  </div>
+                  <div class="date_modal_toggle">
+                    <div class="">
+                      <div class="left">
+                        <label>from</label>
+                      </div
+                      ><div class="right">
+                        <label><i>(<?php echo $dateFrom; ?>)<i></label>
+                      </div>
+                    </div>
+                    <div class="">
+                      <div class="left">
+                        <label>to</label>
+                        </div
+                        ><div class="right">
+                          <label><i>(<?php echo $dateTo; ?>)<i></label>
+                        </div>
+                      </div>
 
-          <div style="text-align:center">
-            <p>total $65</p>
-          </div>
+                    </div>
+                  <!-- New Date -->
+                  <div class="date_modal">
+                    <label>Rent From</label>
+                    <input type="date" name="dateFrom">
+                    <label> to </label>
+                    <input type="date" name="dateTo">
+                  </div>
+                  <div class="date_modal_toggle">
+                    <div class="">
+                      <div class="left">
+                        <label>from</label>
+                      </div
+                      ><div class="right">
+                        <input type="date" name="dateFromToggle">
+                      </div>
+                    </div>
+                    <div class="">
+                      <div class="left">
+                        <label>to</label>
+                        </div
+                        ><div class="right">
+                          <input type="date" name="dateToToggle">
+                        </div>
+                      </div>
 
-          <div class="lineBreak"></div>
+                    </div>
 
-          <div style="text-align:center">
-            <button type="button" id="next2_btn" class="btn">Next</button>
-          </div>
+                  </div>
+                  <div style="clear:left"></div>
 
-        </div>
+                  <div style="text-align:center">
+                    <p>total $65</p>
+                  </div>
 
-        <div class="modal-content" id="modal-content3">
-          <span class="close">&times;</span>
-          <div style="clear:right"></div>
+                  <div class="lineBreak"></div>
 
-          <!-- Payment section -->
-          <div class="payment section">
-            <h3>Payment</h3>
-            <!-- Payment -->
-            <div class="">
-              <div  class="keySide">
-                <label>Payment</label>
-              </div
-              ><div class="dataSide">
-                <label>XXXX-XXXX-XXXX-1234</label>
-              </div>
-            </div>
-            <!-- Payment type -->
-            <div class="">
-              <div  class="keySide">
-                <label>Payment type</label>
-              </div
-              ><div class="dataSide">
-                <label>VISA</label>
-              </div>
-            </div>
-            <!-- CCV -->
-            <div class="">
-              <div  class="keySide">
-                <label>ccv</label>
-              </div
-              ><div class="dataSide">
-                <input id="ccv" type="text" name="" value="">
-              </div>
-            </div>
-            <!-- Price -->
-            <div class="">
-              <div  class="keySide">
-                <label>Price</label>
-              </div
-              ><div class="dataSide">
-                <label>$65</label>
-              </div>
-            </div>
-          </div>
+                  <div style="text-align:center">
+                    <button type="button" id="next2_btn" class="btn">Next</button>
+                  </div>
 
-          <div style="clear:left"></div>
+                </div>
 
-          <div class="lineBreak"></div>
+                <div class="modal-content" id="modal-content3">
+                  <span class="close">&times;</span>
+                  <div style="clear:right"></div>
 
-          <div style="text-align:center">
-            <input type="submit" id="confirm_btn" class="btn" value="Confirm" style="color:#FFF; padding:10px 20px; width:auto; font-size:16px;">
-          </div>
+                  <!-- Payment section -->
+                  <div class="payment section">
+                    <h3>Payment</h3>
+                    <!-- Payment -->
+                    <div class="">
+                      <div  class="keySide">
+                        <label>Payment</label>
+                      </div
+                      ><div class="dataSide">
+                        <label>XXXX-XXXX-XXXX-1234</label>
+                      </div>
+                    </div>
+                    <!-- Payment type -->
+                    <div class="">
+                      <div  class="keySide">
+                        <label>Payment type</label>
+                      </div
+                      ><div class="dataSide">
+                        <label>VISA</label>
+                      </div>
+                    </div>
+                    <!-- CCV -->
+                    <div class="">
+                      <div  class="keySide">
+                        <label>ccv</label>
+                      </div
+                      ><div class="dataSide">
+                        <input id="ccv" type="text" name="" value="">
+                      </div>
+                    </div>
+                    <!-- Price -->
+                    <div class="">
+                      <div  class="keySide">
+                        <label>Price</label>
+                      </div
+                      ><div class="dataSide">
+                        <label>$65</label>
+                      </div>
+                    </div>
+                  </div>
 
-      <?php
+                  <div style="clear:left"></div>
+
+                  <div class="lineBreak"></div>
+
+                  <div style="text-align:center">
+                    <input type="submit" id="confirm_btn" class="btn" value="Confirm" style="color:#FFF; padding:10px 20px; width:auto; font-size:16px;">
+                  </div>
+              <?php
+            } else {
+              echo "<br><br><i>this item is not availiable -.-</i><br><br>";
+            }
           } else {
             echo "<script>window.location='index.php?page=find'</script>";
           }
@@ -326,14 +330,32 @@
 <?php
 
   if(isset($_POST['address']) && isset($_POST['dateFrom']) && isset($_POST['dateTo'])){
-    $sql = "INSERT INTO rental (itemID, dateFrom, dateTo, status, customerID, addressID, staffID)
-            VALUES ('$_GET[id]', '$_POST[dateFrom]', '$_POST[dateTo]', 'checking', '$_SESSION[customerID]', '$_POST[address]', 1)";
-    $result = $con -> query($sql);
-    if($result){
-      echo "<script>
-              alert('you are already rent ^^')
-              window.location = './index.php?page=find'
-            </script>";
+    if(strtotime($dateFrom)<=strtotime($_POST['dateFrom']) && strtotime($dateTo)>=strtotime($_POST['dateTo'])){
+      if(strtotime($_POST['dateTo'])>strtotime($_POST['dateFrom'])){
+        $sql = "INSERT INTO rental (itemID, dateFrom, dateTo, status, customerID, addressID, staffID)
+                VALUES ('$_GET[id]', '$_POST[dateFrom]', '$_POST[dateTo]', 'checking', '$_SESSION[customerID]', '$_POST[address]', 1)";
+        $result = $con -> query($sql);
+        if($result){
+          $sql = "UPDATE item SET status='checking' WHERE itemID='$_GET[id]'";
+          $result = $con -> query($sql);
+          if($result){
+            echo "<script>
+                    alert('200 : you are already rent ^^')
+                    window.location = './index.php?page=find'
+                  </script>";
+          } else {
+            echo $con->error;
+          }
+        }
+      } else {
+        echo "<script>
+                alert('date wrong (from $_POST[dateTo] to $_POST[dateFrom])')
+              </script>";
+      }
+    } else {
+        echo "<script>
+                alert('date must be between $dateFrom - $dateTo')
+              </script>";
     }
   }
 

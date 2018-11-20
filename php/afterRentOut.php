@@ -25,8 +25,8 @@
   }
 
   $customerID = $_SESSION['customerID'];
-  $sql = "INSERT INTO item (title, category, subCategory, description, dateFrom, dateTo, price, customerID)
-          VALUES ('$title', '$category', '$subCategory', '$desc', '$dateFrom', '$dateTo', '$price', '$customerID')";
+  $sql = "INSERT INTO item (title, category, subCategory, description, status, dateFrom, dateTo, price, customerID)
+          VALUES ('$title', '$category', '$subCategory', '$desc', 'checking', '$dateFrom', '$dateTo', '$price', '$customerID')";
   $result = $con->query($sql);
   if($result){
 

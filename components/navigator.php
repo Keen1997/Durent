@@ -202,12 +202,24 @@ nav a:hover{
   </ul>
 </div>
 <!-- Navigator bar for mobile width -->
-<div id="navToggle"><img id="navMenu" src="./assets/static/menu_white.png"></div>
+<div id="navToggle"><a href="index.php" style="float:left"><img id="navLogo" style="margin:-5px;padding:0px;height:30px" src="./assets/static/logo_white.png"></a><img id="navMenu" src="./assets/static/menu_white.png"></div>
 <ul id="navMedia">
-  <li><a href="index.php?page=signup">Sign Up</a></li>
-  <li><a href="index.php?page=login">Log In</a></li>
-  <li><a href="#">home</a></li>
-  <li><a href="#">home</a></li>
+  <li><a href="index.php?page=find">find</a></li>
+  <li><a href="index.php?page=rentOut">rent</a></li>
+  <li><a href="index.php?page=about">about us</a></li>
+  <li><a href="index.php?page=structure">structure</a></li>
+  <?php
+    if(isset($_SESSION['email'])){
+      ?>
+      <li><a href="index.php?page=profile"><?php echo $email; ?></a></li>
+      <?php
+    } else {
+      ?>
+      <li><a href="index.php?page=signup">Sign Up</a></li>
+      <li><a href="index.php?page=login">Log In</a></li>
+      <?php
+    }
+  ?>
 </ul>
 
 

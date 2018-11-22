@@ -68,6 +68,7 @@
         else if ($page=='staffLogin') require './components/staffLogin.php';
         else if ($page=='adminLogin') require './components/adminLogin.php';
         // Php logic
+        else if ($page=='afterChangeStatus') require './php/afterChangeStatus.php';
         else if ($page=='afterRentOut') require './php/afterRentOut.php';
         else if ($page=='afterRentItem') require './php/afterRentItem.php';
         else if ($page=='afterInfoEdit') require './php/afterInfoEdit.php';

@@ -182,9 +182,53 @@
 
 <?php
 
-  if(!isset($_SESSION['staffID']) || !isset($_SESSION['staffEmail'])){
+  if(!isset($_SESSION['staffID']) && !isset($_SESSION['staffEmail'])){
     echo "<script>window.location = './index.php'</script>";
   }
+
+?>
+
+<!-- Delete table -->
+<?php
+
+if(isset($_GET['delCustomer'])){
+  $sql_acc = "SELECT accountID FROM customer WHERE customerID=$_GET[delCustomer]";
+  $result_acc = $con->query($sql_acc);
+  if($result_acc){
+    $row = $result_acc->fetch_assoc();
+    $accountID = $row['accountID'];
+    $sql = "DELETE FROM customer WHERE accountID=$accountID";
+    $result = $con->query($sql);
+    if($result){
+      $sql2 = "DELETE FROM account WHERE accountID=$accountID";
+      $result2 = $con->query($sql2);
+      if($result2){
+        echo "<script>window.location = './index.php?page=admin'</script>";
+      }
+    }
+  }
+}
+if(isset($_GET['delAddress'])){
+  $sql = "DELETE FROM address WHERE addressID=$_GET[delAddress]";
+  $result = $con->query($sql);
+  if($result){
+    echo "<script>window.location = './index.php?page=admin'</script>";
+  }
+}
+if(isset($_GET['delItem'])){
+  $sql = "DELETE FROM item WHERE itemID=$_GET[delItem]";
+  $result = $con->query($sql);
+  if($result){
+    echo "<script>window.location = './index.php?page=admin'</script>";
+  }
+}
+if(isset($_GET['delRental'])){
+  $sql = "DELETE FROM rental WHERE rentalID=$_GET[delRental]";
+  $result = $con->query($sql);
+  if($result){
+    echo "<script>window.location = './index.php?page=admin'</script>";
+  }
+}
 
 ?>
 
@@ -240,10 +284,12 @@
         <th>email</th>
         <th>payment</th>
         <th>payment type</th>
+        <th>del</th>
       </tr>
       <?php
         $sql = "SELECT * FROM customer, account WHERE customer.accountID=account.accountID";
         $result = $con->query($sql);
+        $count = mysqli_num_rows($result);
         while($row = $result->fetch_assoc()){
       ?>
       <tr>
@@ -254,12 +300,13 @@
         <td><?php echo $row['email']; ?></td>
         <td><?php echo $row['payment']; ?></td>
         <td><?php echo $row['paymentType']; ?></td>
+        <td><a href="index.php?page=staff&delCustomer=<?php echo $row['customerID']; ?>"><img width="15" src="./assets/static/bin.png"></a></td>
       </tr>
       <?php
         }
       ?>
     </table>
-    <div class="border">total 1 records</div>
+    <div class="border">total <?php echo $count; ?> records</div>
   </div>
 
   <div class="address panel">
@@ -303,10 +350,12 @@
         <th>province</th>
         <th>zipcode</th>
         <th>customerID</th>
+        <th>del</th>
       </tr>
       <?php
         $sql = "SELECT * FROM address";
         $result = $con->query($sql);
+        $count = mysqli_num_rows($result);
         while($row = $result->fetch_assoc()){
       ?>
       <tr>
@@ -320,12 +369,13 @@
         <td><?php echo $row['province']; ?></td>
         <td><?php echo $row['zipcode']; ?></td>
         <td><?php echo $row['customerID']; ?></td>
+        <td><a href="index.php?page=staff&delAddress=<?php echo $row['addressID']; ?>"><img width="15" src="./assets/static/bin.png"></a></td>
       </tr>
       <?php
         }
       ?>
     </table>
-    <div class="border">total 1 records</div>
+    <div class="border">total <?php echo $count; ?> records</div>
   </div>
 
   <div class="item panel">
@@ -347,13 +397,16 @@
         <th>title</th>
         <th>description</th>
         <th>price(per day)</th>
+        <th>status</th>
         <th>dateFrom</th>
         <th>dateTo</th>
         <th>customerID</th>
+        <th>del</th>
       </tr>
       <?php
         $sql = "SELECT * FROM item";
         $result = $con->query($sql);
+        $count = mysqli_num_rows($result);
         while($row = $result->fetch_assoc()){
       ?>
       <tr>
@@ -361,15 +414,29 @@
         <td><?php echo $row['title']; ?></td>
         <td><?php echo $row['description']; ?></td>
         <td><?php echo $row['price']; ?></td>
+        <td>
+          <form class="" action="index.php?page=afterChangeStatus" method="post">
+            <input type="hidden" name="id" value="<?php echo $row['itemID']; ?>">
+            <input type="hidden" name="page" value="staff">
+            <select name="status" class="changeStatus">
+              <option <?php if ($row['status']=='checking') echo "selected"; ?>>checking</option>
+              <option <?php if ($row['status']=='availiable') echo "selected"; ?>>availiable</option>
+              <option <?php if ($row['status']=='deliver') echo "selected"; ?>>deliver</option>
+              <option <?php if ($row['status']=='renting') echo "selected"; ?>>renting</option>
+              <option <?php if ($row['status']=='rented') echo "selected"; ?>>rented</option>
+            </select>
+          </form>
+        </td>
         <td><?php echo $row['dateFrom']; ?></td>
         <td><?php echo $row['dateTo']; ?></td>
         <td><?php echo $row['customerID']; ?></td>
+        <td><a href="index.php?page=staff&delItem=<?php echo $row['itemID']; ?>"><img width="15" src="./assets/static/bin.png"></a></td>
       </tr>
       <?php
         }
       ?>
     </table>
-    <div class="border">total 1 records</div>
+    <div class="border">total <?php echo $count; ?> records</div>
   </div>
 
   <div class="rental panel">
@@ -406,14 +473,16 @@
         <th>itemID</th>
         <th>dateFrom</th>
         <th>dateTo</th>
-        <th>status</th>
         <th>customerID</th>
         <th>staffID</th>
         <th>addressID</th>
+        <th>status</th>
+        <th>del</th>
       </tr>
       <?php
-        $sql = "SELECT * FROM rental";
+        $sql = "SELECT * FROM rental, item WHERE rental.itemID=item.itemID";
         $result = $con->query($sql);
+        $count = mysqli_num_rows($result);
         while($row = $result->fetch_assoc()){
       ?>
       <tr>
@@ -421,16 +490,29 @@
         <td><?php echo $row['itemID']; ?></td>
         <td><?php echo $row['dateFrom']; ?></td>
         <td><?php echo $row['dateTo']; ?></td>
-        <td><?php echo $row['status']; ?></td>
         <td><?php echo $row['customerID']; ?></td>
         <td><?php echo $row['staffID']; ?></td>
         <td><?php echo $row['addressID']; ?></td>
+        <td>
+          <form action="index.php?page=afterChangeStatus" method="post">
+            <input type="hidden" name="id" value="<?php echo $row['itemID']; ?>">
+            <input type="hidden" name="page" value="staff">
+            <select name="status" class="changeStatus">
+              <option <?php if ($row['status']=='checking') echo "selected"; ?>>checking</option>
+              <option <?php if ($row['status']=='availiable') echo "selected"; ?>>availiable</option>
+              <option <?php if ($row['status']=='deliver') echo "selected"; ?>>deliver</option>
+              <option <?php if ($row['status']=='renting') echo "selected"; ?>>renting</option>
+              <option <?php if ($row['status']=='rented') echo "selected"; ?>>rented</option>
+            </select>
+          </form>
+        </td>
+        <td><a href="index.php?page=staff&delRental=<?php echo $row['rentalID']; ?>"><img width="15" src="./assets/static/bin.png"></a></td>
       </tr>
       <?php
         }
       ?>
     </table>
-    <div class="border">total 4 records</div>
+    <div class="border">total <?php echo $count; ?> records</div>
   </div>
 
   <div class="special">
@@ -614,24 +696,23 @@
       $(this).css({'color' : '#00F'})
     } else if ($(this).html()=='renting'+imgEdit_tag) {
       $(this).css({'color' : '#e68a00'})
-    }
-  })
-  $('.item_status').each(function(){
-    if($(this).html()=='availiable'+imgEdit_tag){
-      $(this).css({'color' : '#093'})
-    } else if ($(this).html()=='none availiable'+imgEdit_tag) {
+    } else if ($(this).html()=='deliver'+imgEdit_tag) {
       $(this).css({'color' : '#e68a00'})
-    } else if ($(this).html()=='ban'+imgEdit_tag) {
-      $(this).css({'color' : '#F00'})
     }
   })
-  $('.customer_status').each(function(){
-    if($(this).html()=='activated'+imgEdit_tag){
-      $(this).css({'color' : '#093'})
-    } else if ($(this).html()=='none-activate'+imgEdit_tag) {
-      $(this).css({'color' : '#e68a00'})
-    } else if ($(this).html()=='ban'+imgEdit_tag) {
-      $(this).css({'color' : '#F00'})
+
+  let oldValueStatus
+  $('.changeStatus').mousedown(function(){
+    oldValueStatus = $(this).val()
+  })
+  $('.changeStatus').change(function(){
+    let c = confirm("Do you want to change status")
+    if(c){
+      $(this).closest('form').submit()
+    } else {
+      $(this).val(oldValueStatus)
     }
   })
+
+
 </script>

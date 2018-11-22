@@ -28,6 +28,14 @@
   }
 </style>
 
+<?php
+
+  if(isset($_SESSION['adminEmail']) || isset($_SESSION['adminID'])){
+    echo "<script>window.location = 'index.php?page=admin'</script>";
+  }
+
+?>
+
 <div class="container template">
   <h2>Admin log In</h2>
   <form class="" action="index.php?page=adminLogin" method="post">

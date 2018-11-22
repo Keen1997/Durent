@@ -383,15 +383,15 @@
             $result_item = $con->query($sql_item);
             while($row_item = $result_item->fetch_assoc()){
               $itemTitle = $row_item['title'];
-            }
             ?>
               <tr>
                 <td><?php echo $row['dateFrom']; ?></td>
                 <td><?php echo $row['dateTo']; ?></td>
                 <td class="itemName"><a href="./index.php?page=itemDetail&id=<?php echo $row['itemID']; ?>"><?php echo $itemTitle; ?></a></td>
-                <td class="status"><?php echo $row['status']; ?></td>
+                <td class="status"><?php echo $row_item['status']; ?></td>
               </tr>
             <?php
+            }
           }
         } else {
           echo "<br><br>You never rent anything.<br><br>";
@@ -399,30 +399,6 @@
         }
 
       ?>
-      <!-- <tr>
-        <td>08-02-2018</td>
-        <td>10-07-2018</td>
-        <td class="itemName"><a href="#">On Stage MS7201B</a></td>
-        <td class="status">returned</td>
-      </tr>
-      <tr>
-        <td>08-05-2018</td>
-        <td>10-11-2018</td>
-        <td class="itemName"><a href="#">Samsung Gear Fit 2 Pro</a></td>
-        <td class="status">deliver</td>
-      </tr>
-      <tr>
-        <td>09-25-2018</td>
-        <td>10-25-2018</td>
-        <td class="itemName"><a href="#">Apple Watch Series4</a></td>
-        <td class="status">checking</td>
-      </tr>
-      <tr>
-        <td>10-20-2018</td>
-        <td>11-14-2018</td>
-        <td class="itemName"><a href="#">Marantz HD-AMP1</a></td>
-        <td class="status">renting</td>
-      </tr> -->
     </table>
     <?php if($result && mysqli_num_rows($result)>0){ ?>
       <div class="total">total <?php echo mysqli_num_rows($result); ?></div>
@@ -462,27 +438,6 @@
           echo "Click <u><a href='./index.php?page=rentOut'>here</a></u> to rent somethings !!<br><br><br><br>";
         }
       ?>
-
-      <!-- <tr>
-        <td class="itemName"><a href="#">Egara Sharkskin Slim Fit Suit</a></td>
-        <td class="status">returned</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td class="itemName"><a href="#">Joseph Abboud Modern Fit Suit</a></td>
-        <td class="status">checking</td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td class="itemName"><a href="#">Ben Sherman Chambray Blue Fit Suit</a></td>
-        <td class="status">renting</td>
-        <td>6</td>
-      </tr>
-      <tr>
-        <td class="itemName"><a href="#">Awearness Kenneth Cole Slim Fit Suit</a></td>
-        <td class="status">renting</td>
-        <td>12</td>
-      </tr> -->
     </table>
     <?php if(mysqli_num_rows($result)>0){ ?>
       <div class="total">total <?php echo mysqli_num_rows($result); ?></div>

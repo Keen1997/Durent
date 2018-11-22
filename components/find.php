@@ -213,7 +213,8 @@
   // To Set height of every cards equal, add line space between image and text in each cards
   $('.cardContainer').each(function(){
     let h = $(this).height()
-    $(this).find('.textCard').css({'padding-top': 325-h})
+    $(this).find('.textCard').css({'padding-top': 315-h})
+    $(this).find('.textCard').css({'padding-bottom': 345-h})
   })
 
   // Toggle submenu when hover parent or not when no hover and set top position of submenu to equal parent

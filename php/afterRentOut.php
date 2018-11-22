@@ -26,10 +26,9 @@
 
   $customerID = $_SESSION['customerID'];
   $sql = "INSERT INTO item (title, category, subCategory, description, status, dateFrom, dateTo, price, customerID)
-          VALUES ('$title', '$category', '$subCategory', '$desc', 'checking', '$dateFrom', '$dateTo', '$price', '$customerID')";
+          VALUES ('$title', '$category', '$subCategory', '$desc', 'availiable', '$dateFrom', '$dateTo', '$price', '$customerID')";
   $result = $con->query($sql);
   if($result){
-
     $itemID = $con->insert_id;
 
     $name_img = $_FILES['images']['name'];

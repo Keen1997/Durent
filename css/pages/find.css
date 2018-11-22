@@ -55,7 +55,6 @@
 .allCards{
   margin: auto;
   width: 1000px;
-  text-align: center;
 }
 .cardContainer{
   box-sizing: border-box;
@@ -67,7 +66,7 @@
 }
 .card{
   display: inline-block;
-  width: 230px;
+  width: 235px;
   border: 1px solid #DDD;
   border-radius: 12px;
   text-decoration: none;

@@ -338,8 +338,8 @@
   if(isset($_POST['address']) && isset($_POST['dateFrom']) && isset($_POST['dateTo'])){
     if(strtotime($dateFrom)<=strtotime($_POST['dateFrom']) && strtotime($dateTo)>=strtotime($_POST['dateTo'])){
       if(strtotime($_POST['dateTo'])>strtotime($_POST['dateFrom'])){
-        $sql = "INSERT INTO rental (itemID, dateFrom, dateTo, customerID, addressID, staffID)
-                VALUES ('$_GET[id]', '$_POST[dateFrom]', '$_POST[dateTo]', '$_SESSION[customerID]', '$_POST[address]', 1)";
+        $sql = "INSERT INTO rental (itemID, dateFrom, dateTo, customerID, addressID)
+                VALUES ('$_GET[id]', '$_POST[dateFrom]', '$_POST[dateTo]', '$_SESSION[customerID]', '$_POST[address]')";
         $result = $con -> query($sql);
         if($result){
           $sql = "UPDATE item SET status='renting' WHERE itemID='$_GET[id]'";

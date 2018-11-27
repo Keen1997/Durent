@@ -273,7 +273,7 @@ if(isset($_GET['delRental'])){
         <option value="">ban</option>
       </select>
       <div style="clear:left"></div>
-      <input type="submit" name="" value="Enter">
+      <input type="submit" name="" value="Enter" onclick="notAvailiable()">
     </form>
     <table>
       <tr class="">
@@ -336,7 +336,7 @@ if(isset($_GET['delRental'])){
       <label>zip code : </label>
       <input class="shortInput" type="text" name="" value="">
       <div style="clear:left"></div>
-      <input type="submit" name="" value="Enter">
+      <input type="submit" name="" value="Enter" onclick="notAvailiable()">
     </form>
     <table>
       <tr class="">
@@ -389,7 +389,7 @@ if(isset($_GET['delRental'])){
       <label style="margin-left:-15px">to </label>
       <input class="longInput" type="date" name="" value="">
       <div style="clear:left"></div>
-      <input type="submit" name="" value="Enter">
+      <input type="submit" name="" value="Enter" onclick="notAvailiable()">
     </form>
     <table>
       <tr class="">
@@ -465,7 +465,7 @@ if(isset($_GET['delRental'])){
         <option value="">renting</option>
       </select>
       <div style="clear:left"></div>
-      <input type="submit" name="" value="Enter">
+      <input type="submit" name="" value="Enter" onclick="notAvailiable()">
     </form>
     <table>
       <tr class="">
@@ -474,7 +474,6 @@ if(isset($_GET['delRental'])){
         <th>dateFrom</th>
         <th>dateTo</th>
         <th>customerID</th>
-        <th>staffID</th>
         <th>addressID</th>
         <th>status</th>
         <th>del</th>
@@ -491,7 +490,6 @@ if(isset($_GET['delRental'])){
         <td><?php echo $row['dateFrom']; ?></td>
         <td><?php echo $row['dateTo']; ?></td>
         <td><?php echo $row['customerID']; ?></td>
-        <td><?php echo $row['staffID']; ?></td>
         <td><?php echo $row['addressID']; ?></td>
         <td>
           <form action="index.php?page=afterChangeStatus" method="post">
@@ -714,5 +712,8 @@ if(isset($_GET['delRental'])){
     }
   })
 
+  function notAvailiable(){
+    alert('not availiable')
+  }
 
 </script>

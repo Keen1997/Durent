@@ -51,7 +51,7 @@
         5. Another user rent item, pay expenses and deposit <br>
         6. Status will change to deliver. Staff role deliver will take the item to customer <br>
         7. When item arrive, status change to renting <br>
-        8. User return to item durent <br>
+        8. User return the item to durent <br>
         9. Staff role specialist check the defective of item <br>
         10. Durent will return deposit following the defective of item <br>
         11. Staff role deliver send the item to the owner, and status will change to rented <br>
@@ -116,7 +116,6 @@
   <div class="col" style="text-align:left; font-size:14px">
     - &nbsp;&nbsp;&nbsp;This is not a real website, so we assume the item will availiable when user rent their own item <br>
     - &nbsp;&nbsp;&nbsp;Staff did not seperate role in this website, because this is not a real website <br>
-    - &nbsp;&nbsp;&nbsp;This website is responsive but not perfect <br>
   </div>
 
   <div class="col" style="text-align:left; font-size:14px">

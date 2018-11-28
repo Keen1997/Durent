@@ -18,6 +18,9 @@
   a {
     color: #663096;
   }
+  a:hover {
+    color: #9988aa;
+  }
   @media (max-width:576px){
     .template{
       width: calc(100% - 80px);

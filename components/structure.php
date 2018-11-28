@@ -22,6 +22,9 @@
   a {
     color: #663096;
   }
+  a:hover {
+    color: #9988aa;
+  }
   @media (max-width:768px){
     .template{
       max-width: 100%;
